@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/24.2.1.iml" filepath="$PROJECT_DIR$/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/24.2.1.iml" />
       <module fileurl="file://$PROJECT_DIR$/build/intermediates/manifests/full/debug/debug.iml" filepath="$PROJECT_DIR$/build/intermediates/manifests/full/debug/debug.iml" />
       <module fileurl="file://$PROJECT_DIR$/src/main/main.iml" filepath="$PROJECT_DIR$/src/main/main.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/TestApplication.iml" filepath="$PROJECT_DIR$/TestApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testapplication/testapplication.iml" filepath="$PROJECT_DIR$/testapplication/testapplication.iml" />
+>>>>>>> origin/master
     </modules>
   </component>
 </project>
