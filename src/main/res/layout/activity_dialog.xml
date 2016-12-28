@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/datetext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:textSize="25dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_margin="50dp"
+        android:textColorHint="@color/colorAccent"
+        android:hint="请选择日期"
+        android:background="@drawable/btn_bg21"
+        android:padding="10dp"
+        />
+    <EditText
+        android:id="@+id/idet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:textSize="25dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_margin="50dp"
+        android:textColorHint="@color/colorAccent"
+        android:hint="请选择有效期"
+        android:background="@drawable/btn_bg21"
+        android:padding="10dp"
+        />
+
+</LinearLayout>

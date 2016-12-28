@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.aozun.testapplication.DateSlider.SliderContainer
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dateSliderContainer"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <com.example.aozun.testapplication.DateSlider.ScrollLayout
+        style="@style/Scroller"
+        app:labelerClass="com.example.aozun.testapplication.DateSlider.labeler.YearLabeler"
+        app:labelerFormat="%tY"
+        app:childWidth="250dp"/>
+    <com.example.aozun.testapplication.DateSlider.ScrollLayout
+        style="@style/Scroller"
+        app:labelerClass="com.example.aozun.testapplication.DateSlider.labeler.MonthLabeler"
+        app:labelerFormat="%tm"
+        app:childWidth="250dp"/>
+    <include layout="@layout/dialogbuttons"/>
+</com.example.aozun.testapplication.DateSlider.SliderContainer>

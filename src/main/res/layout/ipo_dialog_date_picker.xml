@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/colordblue"
+    >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/iddatetv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="110dip"
+            android:gravity="center"
+            android:text="起始日期："
+            android:textColor="@android:color/white"
+            android:textSize="22dip" />
+
+        <TextView
+            android:id="@+id/iddatetv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="150dip"
+            android:layout_toRightOf="@+id/iddatetv1"
+            android:gravity="center"
+            android:text="截至日期："
+            android:textColor="@android:color/white"
+            android:textSize="22dip" />
+
+        <DatePicker
+            android:id="@+id/startDatePicker"
+            android:layout_width="300dip"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/startadd5"
+            android:background="@color/colorwhite"
+            />
+
+        <DatePicker
+            android:id="@+id/endDatePicker"
+            android:layout_width="300dip"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/startDatePicker"
+            android:layout_below="@+id/startadd5"
+            android:layout_toRightOf="@+id/startDatePicker"
+            android:background="@color/colorwhite"
+            />
+
+        <Button
+            android:id="@+id/startadd5"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iddatetv1"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="25dip"
+            android:background="#e9e9e9"
+            android:text="+5年"
+            android:textColor="#222222"
+            android:textSize="22dip" />
+
+        <Button
+            android:id="@+id/startaddday5"
+            android:layout_width="55dip"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iddatetv1"
+            android:layout_marginLeft="110dip"
+            android:layout_marginTop="25dip"
+            android:layout_toRightOf="@+id/startadd5"
+            android:background="#e9e9e9"
+            android:text="+5天"
+            android:textColor="#222222"
+            android:textSize="22dip" />
+
+        <Button
+            android:id="@+id/endadd5"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/endDatePicker"
+            android:layout_alignLeft="@+id/endDatePicker"
+            android:layout_below="@+id/iddatetv2"
+            android:layout_marginTop="25dip"
+            android:layout_toRightOf="@+id/startaddday5"
+            android:background="#e9e9e9"
+            android:text="+5年"
+            android:textColor="#222222"
+            android:textSize="22dip" />
+
+        <Button
+            android:id="@+id/apply"
+            android:layout_width="120dip"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/startminus5"
+            android:layout_marginLeft="70dip"
+            android:layout_marginTop="25dip"
+            android:text="确认"
+            android:textSize="22dip"
+            android:textColor="@color/colorwhite"
+            />
+
+        <Button
+            android:id="@+id/startminus5"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/startadd5"
+            android:layout_below="@+id/startDatePicker"
+            android:background="#e9e9e9"
+            android:text="-5年"
+            android:textColor="#222222"
+            android:textSize="22dip" />
+
+        <Button
+            android:id="@+id/startminusday5"
+            android:layout_width="60dip"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/startaddday5"
+            android:layout_below="@+id/startDatePicker"
+            android:layout_toRightOf="@+id/startminus5"
+            android:background="#e9e9e9"
+            android:text="-5天"
+            android:textColor="#222222"
+            android:textSize="22dip" />
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="120dip"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/startminus5"
+            android:layout_marginLeft="30dip"
+            android:layout_marginTop="25dip"
+            android:layout_toRightOf="@+id/apply"
+            android:text="取消"
+            android:textSize="22dip"
+            android:textColor="@color/colorwhite"
+            />
+
+        <CheckBox
+            android:id="@+id/idvalid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/startminus5"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="50dip"
+            android:layout_marginTop="25dip"
+            android:layout_toRightOf="@+id/cancel"
+            android:text="长期有效"
+            android:textColor="@color/colorwhite"
+            />
+
+        <Button
+            android:id="@+id/endminus5"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/endadd5"
+            android:layout_below="@+id/endDatePicker"
+            android:layout_toRightOf="@+id/startminusday5"
+            android:background="#e9e9e9"
+            android:text="-5年"
+            android:textColor="#222222"
+            android:textSize="22dip" />
+    </RelativeLayout>
+
+</LinearLayout>
