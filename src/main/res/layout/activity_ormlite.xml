@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.aozun.testapplication.activity.ORMLiteActivity"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/margin"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/margin"
+        >
+        <Button
+            android:id="@+id/bt_add"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/bt_width"
+            android:layout_weight="1"
+            android:text="增"
+            android:textStyle="bold"
+            android:background="@drawable/btn_big_red_style"
+            android:layout_margin="@dimen/margin"
+            android:textColor="@color/bt_textcolor"
+            android:textSize="@dimen/btDB_size"
+            />
+        <Button
+            android:id="@+id/bt_delete"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/bt_width"
+            android:layout_weight="1"
+            android:text="删"
+            android:textStyle="bold"
+            android:background="@drawable/btn_big_red_style"
+            android:layout_margin="@dimen/margin"
+            android:textColor="@color/bt_textcolor"
+            android:textSize="@dimen/btDB_size"
+            />
+
+        <Button
+            android:id="@+id/bt_uptate"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/bt_width"
+            android:layout_weight="1"
+            android:text="改"
+            android:textStyle="bold"
+            android:background="@drawable/btn_big_red_style"
+            android:layout_margin="@dimen/margin"
+            android:textColor="@color/bt_textcolor"
+            android:textSize="@dimen/btDB_size"
+            />
+        <Button
+            android:id="@+id/bt_query"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/bt_width"
+            android:layout_weight="1"
+            android:text="查"
+            android:textStyle="bold"
+            android:background="@drawable/btn_big_red_style"
+            android:layout_margin="@dimen/margin"
+            android:textSize="@dimen/btDB_size"
+            android:textColor="@color/bt_textcolor"
+            />
+
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorBlack"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colordblue"
+                android:text="查询数据"
+                android:gravity="center"
+                android:textSize="@dimen/content_size"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

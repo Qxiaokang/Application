@@ -1,4 +1,4 @@
-package com.example.aozun.testapplication.utils;
+package com.example.aozun.testapplication.db;
 
 import android.content.Context;
 import android.database.Cursor;
