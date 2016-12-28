@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="bt_width">100dp</dimen>
     <dimen name="bt_margin">10dp</dimen>
+    <dimen name="content_size">25dp</dimen>
+
 </resources>
