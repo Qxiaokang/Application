@@ -15,9 +15,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.aozun.testapplication.activity.ORMLiteActivity;
 import com.example.aozun.testapplication.adapter.RecycleAdapter;
+import com.example.aozun.testapplication.db.TestOpenHelp;
 import com.example.aozun.testapplication.utils.Netutil;
-import com.example.aozun.testapplication.utils.TestOpenHelp;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +32,7 @@ import java.util.Map;
 public class MainActivity extends Activity implements RecycleAdapter.RecycleonclickListener, RecycleAdapter.RecycleonLongclickListener{
 
     private RecyclerView hrecyclerView;
-    private String buts[] = {"ConnectivityManager", "DateSlide", "HGallery", "OkHttpUtils", "Socket", "五", "六", "七", "八", "九", "十"};//按钮为例
+    private String buts[] = {"ConnectivityManager", "DateSlide", "HGallery", "OkHttpUtils", "Socket", "ORMLite", "六", "七", "八", "九", "十"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
     private List<String> datas = new ArrayList<>();
@@ -117,6 +118,9 @@ public class MainActivity extends Activity implements RecycleAdapter.Recycleoncl
             }
             if(data.equals(buts[4])){
                 intent=new Intent(MainActivity.this,SocketActivity.class);
+            }
+            if(data.equals(buts[5])){
+                intent=new Intent(MainActivity.this, ORMLiteActivity.class);
             }
             if(intent != null){
                 MainActivity.this.startActivity(intent);

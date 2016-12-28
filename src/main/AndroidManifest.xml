@@ -29,6 +29,11 @@
         <activity
             android:name=".OkHttpActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".SocketActivity" android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".SocketActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".activity.ORMLiteActivity"
+            android:screenOrientation="landscape"
+            ></activity>
     </application>
 </manifest>
