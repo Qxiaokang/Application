@@ -42,9 +42,8 @@ public class UserDao{
         getUserDao().deleteById(id);
     }
     //改
-    public void updateDb(User user) throws SQLException{
-
-            getUserDao().update(user);
+    public void updateDb(String id) throws SQLException{
+            getUserDao().updateRaw("update T_USER set t_user_id='update_userId' where id=?",id);
 
     }
     //查
