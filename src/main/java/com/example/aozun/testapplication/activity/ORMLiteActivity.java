@@ -69,13 +69,11 @@ public class ORMLiteActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.bt_uptate:
                 try{
-                    List<User> users = userDao.queryDb();
-                    if(users!=null&&users.size()>0){
-                        User u=new User(users.get(0).getUser_id(),users.get(0).getUser_pwd());
-                        u.setUser_id("updateId");
-                        userDao.updateDb(u);
+                        List<User> users = userDao.queryDb();
+                    for(int i = 0; i < users.size(); i++){
+                        userDao.updateDb(users.get(users.size()-1).getId()+"");
+                        Toast.makeText(ORMLiteActivity.this, "更新成功", Toast.LENGTH_LONG).show();
                     }
-                    Toast.makeText(ORMLiteActivity.this,"更新成功",Toast.LENGTH_LONG).show();
                 }catch(SQLException e){
                     Toast.makeText(ORMLiteActivity.this,"更新失败",Toast.LENGTH_LONG).show();
                     e.printStackTrace();
