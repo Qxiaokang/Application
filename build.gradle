@@ -30,7 +30,7 @@ dependencies {
 
     compile 'com.j256.ormlite:ormlite-core:5.0'
     compile 'com.j256.ormlite:ormlite-android:5.0'
-    
+
     compile files('libs/litepal-1.2.0.jar')
 
     compile 'io.reactivex:rxjava:1.2.4'
@@ -39,8 +39,10 @@ dependencies {
     compile 'com.kymjs.rxvolley:rxvolley:1.1.4'
     //compile 'com.kymjs.rxvolley:bitmapcore:1.1.4'
     //compile 'com.kymjs.rxvolley:okhttp:1.1.4'
-
+    //compile 'com.trello:rxlifecycle-components:0.6.1'
     compile 'com.jungly:gridPasswordView:0.3'
+
+    compile 'com.github.ctiao:DanmakuFlameMaster:0.5.3' //弹幕
 }
 
 
