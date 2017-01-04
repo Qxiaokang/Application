@@ -188,6 +188,8 @@ public class VideoActivity extends Activity implements DrawHandler.Callback, Vie
                     sendLayout.setVisibility(View.GONE);
                 }
                 break;
+            default:
+                break;
         }
     }
 }

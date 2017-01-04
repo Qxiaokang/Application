@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.aozun.testapplication.activity.LitePalActivity;
+import com.example.aozun.testapplication.activity.MPChartActivity;
 import com.example.aozun.testapplication.activity.ORMLiteActivity;
 import com.example.aozun.testapplication.activity.RxActivtity;
 import com.example.aozun.testapplication.activity.ViewActivity;
@@ -35,7 +36,7 @@ import java.util.Map;
 public class MainActivity extends Activity implements RecycleAdapter.RecycleonclickListener, RecycleAdapter.RecycleonLongclickListener{
 
     private RecyclerView hrecyclerView;
-    private String buts[] = {"ConnectivityManager", "DateSlide", "HGallery", "OkHttpUtils", "litepal", "ORMLite", "RxJava", "Views", "八", "九", "十"};//按钮为例
+    private String buts[] = {"ConnectivityManager", "DateSlide", "HGallery", "OkHttpUtils", "litepal", "ORMLite", "RxJava", "Views", "MPAndroidChart", "九", "十"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
     private List<String> datas = new ArrayList<>();
@@ -130,6 +131,9 @@ public class MainActivity extends Activity implements RecycleAdapter.Recycleoncl
             }
             if(data.equals(buts[7])){
                 intent=new Intent(MainActivity.this,ViewActivity.class);
+            }
+            if(data.equals(buts[8])){
+                intent=new Intent(MainActivity.this,MPChartActivity.class);
             }
             if(intent != null){
                 MainActivity.this.startActivity(intent);
