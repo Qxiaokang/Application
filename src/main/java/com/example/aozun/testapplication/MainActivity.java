@@ -15,7 +15,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.aozun.testapplication.activity.LitePalActivity;
 import com.example.aozun.testapplication.activity.ORMLiteActivity;
+import com.example.aozun.testapplication.activity.RxActivtity;
+import com.example.aozun.testapplication.activity.ViewActivity;
 import com.example.aozun.testapplication.adapter.RecycleAdapter;
 import com.example.aozun.testapplication.db.TestOpenHelp;
 import com.example.aozun.testapplication.utils.Netutil;
@@ -32,7 +35,7 @@ import java.util.Map;
 public class MainActivity extends Activity implements RecycleAdapter.RecycleonclickListener, RecycleAdapter.RecycleonLongclickListener{
 
     private RecyclerView hrecyclerView;
-    private String buts[] = {"ConnectivityManager", "DateSlide", "HGallery", "OkHttpUtils", "Socket", "ORMLite", "六", "七", "八", "九", "十"};//按钮为例
+    private String buts[] = {"ConnectivityManager", "DateSlide", "HGallery", "OkHttpUtils", "litepal", "ORMLite", "RxJava", "Views", "八", "九", "十"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
     private List<String> datas = new ArrayList<>();
@@ -117,14 +120,21 @@ public class MainActivity extends Activity implements RecycleAdapter.Recycleoncl
                 intent = new Intent(MainActivity.this, OkHttpActivity.class);
             }
             if(data.equals(buts[4])){
-                intent=new Intent(MainActivity.this,SocketActivity.class);
+                intent=new Intent(MainActivity.this,LitePalActivity.class);
             }
             if(data.equals(buts[5])){
                 intent=new Intent(MainActivity.this, ORMLiteActivity.class);
             }
+            if(data.equals(buts[6])){
+                intent=new Intent(MainActivity.this, RxActivtity.class);
+            }
+            if(data.equals(buts[7])){
+                intent=new Intent(MainActivity.this,ViewActivity.class);
+            }
             if(intent != null){
                 MainActivity.this.startActivity(intent);
             }
+
         }
     }
 
