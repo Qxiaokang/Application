@@ -47,9 +47,12 @@
         <activity
             android:name=".activity.ViewActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.VideoActivity"
-            android:screenOrientation="landscape"
+        <activity
+            android:name=".activity.VideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape" />
+        <activity android:name=".activity.MPChartActivity"
+            android:screenOrientation="landscape"
             ></activity>
     </application>
 </manifest>

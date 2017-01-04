@@ -98,4 +98,17 @@
         <item name="android:background">@drawable/slider_back</item>
         <item name="android:layout_margin">3dp</item>
     </style>
+    <!---->
+    <style name="ButtonStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">@dimen/bt_margin</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:textColor">@color/bt_textcolor</item>
+        <item name="android:textSize">@dimen/content_size</item>
+        <item name="android:background">@drawable/btn_big_red_style</item>
+        <item name="android:singleLine">true</item>
+    </style>
 </resources>
