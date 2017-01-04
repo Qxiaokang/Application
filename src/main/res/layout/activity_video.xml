@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.aozun.testapplication.activity.VideoActivity">
+
+    <VideoView
+        android:id="@+id/video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true" />
+
+    <master.flame.danmaku.ui.widget.DanmakuView
+        android:id="@+id/danmaku_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/send_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bt_width"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/bt_margin"
+        android:background="@color/colorwhite"
+        android:visibility="gone"
+        >
+
+        <EditText
+            android:id="@+id/send_et"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="@dimen/content_size"
+            />
+
+        <Button
+            android:id="@+id/send_bt"
+            android:layout_width="@dimen/bt_width"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/content_size"
+            android:text="发送" />
+    </LinearLayout>
+</RelativeLayout>
