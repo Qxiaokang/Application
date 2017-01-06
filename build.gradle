@@ -29,23 +29,25 @@ dependencies {
     compile 'com.squareup.okio:okio:1.11.0'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.squareup.okhttp:okhttp:2.4.0'
-
     compile 'com.j256.ormlite:ormlite-core:5.0'
     compile 'com.j256.ormlite:ormlite-android:5.0'
-
     compile files('libs/litepal-1.2.0.jar')
-
     compile 'io.reactivex:rxjava:1.2.4'
     compile 'io.reactivex:rxandroid:1.2.1'
-
     compile 'com.kymjs.rxvolley:rxvolley:1.1.4'
     //compile 'com.kymjs.rxvolley:bitmapcore:1.1.4'
     //compile 'com.kymjs.rxvolley:okhttp:1.1.4'
     //compile 'com.trello:rxlifecycle-components:0.6.1'
     compile 'com.jungly:gridPasswordView:0.3'
-
-    compile 'com.github.ctiao:DanmakuFlameMaster:0.5.3' //弹幕
-    compile 'com.github.PhilJay:MPAndroidChart:v2.1.6'//图表
+    compile 'com.github.ctiao:DanmakuFlameMaster:0.5.3'
+    //弹幕
+    compile 'com.github.PhilJay:MPAndroidChart:v2.1.6'
+    //图表
+    //retrofit2请求
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }
 
 
