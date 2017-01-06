@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.aozun.testapplication.activity.LitePalActivity;
 import com.example.aozun.testapplication.activity.MPChartActivity;
 import com.example.aozun.testapplication.activity.ORMLiteActivity;
+import com.example.aozun.testapplication.activity.Retrofit2Activity;
 import com.example.aozun.testapplication.activity.RxActivtity;
 import com.example.aozun.testapplication.activity.ViewActivity;
 import com.example.aozun.testapplication.adapter.RecycleAdapter;
@@ -36,7 +37,7 @@ import java.util.Map;
 public class MainActivity extends Activity implements RecycleAdapter.RecycleonclickListener, RecycleAdapter.RecycleonLongclickListener{
 
     private RecyclerView hrecyclerView;
-    private String buts[] = {"ConnectivityManager", "DateSlide", "HGallery", "OkHttpUtils", "litepal", "ORMLite", "RxJava", "Views", "MPAndroidChart", "九", "十"};//按钮为例
+    private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "litepal", "ORMLite", "RxJava", "Views", "MPAndroidChart", "九", "十"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
     private List<String> datas = new ArrayList<>();
@@ -106,9 +107,9 @@ public class MainActivity extends Activity implements RecycleAdapter.Recycleoncl
             Toast.makeText(this, "点击" + data.toString(), Toast.LENGTH_LONG).show();
             if(data.equals(buts[0])){
                 if(Netutil.connetWork(this)){
-                    Toast.makeText(this, "已联网", Toast.LENGTH_LONG).show();
+                   intent=new Intent(MainActivity.this, Retrofit2Activity.class);
                 }else{
-                    Toast.makeText(this, "未联网", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "未联网,不能进入下一页", Toast.LENGTH_LONG).show();
                 }
             }
             if(data.equals(buts[1])){
