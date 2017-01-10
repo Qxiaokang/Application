@@ -6,16 +6,10 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 
 import com.example.aozun.testapplication.R;
-import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
-import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
-import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
-import com.nostra13.universalimageloader.core.decode.BaseImageDecoder;
 import com.nostra13.universalimageloader.core.display.CircleBitmapDisplayer;
-import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import java.io.File;
@@ -27,15 +21,16 @@ public class BaseActivity extends Activity{
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState){
         super.onCreate(savedInstanceState, persistentState);
-        initImageloader();
+        initImageloaders();
     }
 
     //初始化imageloader
-    private void initImageloader(){
+    public void initImageloaders(){
         //这里的路径可以自定义
         File cacheDir = StorageUtils.getCacheDirectory(BaseActivity.this);
         ImageLoaderConfiguration configuration = new ImageLoaderConfiguration.Builder(BaseActivity.this)
-                // 默认等于你的屏幕尺寸，设备屏幕宽高
+                .build();
+               /* // 默认等于你的屏幕尺寸，设备屏幕宽高
                 .memoryCacheExtraOptions(480, 800)
                 // 在将下载的图片保存到你的sd卡之前会重新计算，压缩。
                 // 这个属性不要滥用，只有你在对应的需求时再用，因为他会使你的ImageLoader变的很慢。
@@ -75,7 +70,7 @@ public class BaseActivity extends Activity{
                 // 图片显示的配置项。比如加载前、加载中、加载失败应该显示的占位图片，图片是否需要在磁盘缓存，是否需要在内存缓存等。
                 .defaultDisplayImageOptions(DisplayImageOptions.createSimple())
                 //是否显示调试log信息
-                .writeDebugLogs().build();
+                .writeDebugLogs().build();*/
         ImageLoader.getInstance().init(configuration);
     }
 

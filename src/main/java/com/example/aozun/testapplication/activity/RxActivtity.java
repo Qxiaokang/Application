@@ -244,7 +244,6 @@ public class RxActivtity extends AppCompatActivity implements View.OnClickListen
                   public void call(Integer integer){
                       LogUtils.e("main:--i:"+integer);
                       time_bt.setText(integer+"s");
-
                   }
 
               });
