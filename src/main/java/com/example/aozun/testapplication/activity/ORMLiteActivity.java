@@ -1,7 +1,6 @@
 package com.example.aozun.testapplication.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,7 +16,7 @@ import java.util.List;
 /**
  * ORMLite对数据库进行增删改查
  */
-public class ORMLiteActivity extends AppCompatActivity implements View.OnClickListener{
+public class ORMLiteActivity extends BaseActivity implements View.OnClickListener{
     private Button add_bt, delete_bt, update_bt, query_bt;
     private TextView content_tv;//内容
     private int count=1;

@@ -1,6 +1,5 @@
 package com.example.aozun.testapplication.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +14,7 @@ import com.jungly.gridpasswordview.PasswordType;
  * Created by HHD-H-I-0369 on 2017/1/3.
  * 密码验证页
  */
-public class ViewActivity extends Activity implements GridPasswordView.OnPasswordChangedListener, View.OnClickListener{
+public class ViewActivity extends BaseActivity implements GridPasswordView.OnPasswordChangedListener, View.OnClickListener{
     private GridPasswordView passwordView;
     private Button startVideo;
     private String pwdString = null;

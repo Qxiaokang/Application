@@ -5,7 +5,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +49,7 @@ import rx.schedulers.Schedulers;
  * 在一个正确运行的事件序列中, onCompleted() 和 onError() 有且只有一个，并且是事件序列中的最后一个。
  * 需要注意的是，onCompleted() 和 onError() 二者也是互斥的，即在队列中调用了其中一个，就不应该再调用另一个。
  */
-public class RxActivtity extends AppCompatActivity implements View.OnClickListener{
+public class RxActivtity extends BaseActivity implements View.OnClickListener{
     private Button pic_bt;
     private GridAdapter gridAdapter;
     private GridView picgrid;

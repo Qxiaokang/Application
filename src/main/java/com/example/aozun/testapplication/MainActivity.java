@@ -1,6 +1,5 @@
 package com.example.aozun.testapplication;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.aozun.testapplication.activity.BaseActivity;
 import com.example.aozun.testapplication.activity.LitePalActivity;
 import com.example.aozun.testapplication.activity.LockActivity;
 import com.example.aozun.testapplication.activity.MPChartActivity;
@@ -24,6 +24,7 @@ import com.example.aozun.testapplication.activity.RxActivtity;
 import com.example.aozun.testapplication.activity.ViewActivity;
 import com.example.aozun.testapplication.adapter.RecycleAdapter;
 import com.example.aozun.testapplication.db.TestOpenHelp;
+import com.example.aozun.testapplication.service.LockService;
 import com.example.aozun.testapplication.utils.Netutil;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ import java.util.Map;
 /**
  * 可拖动并且可保存位置的RecyclerView
  */
-public class MainActivity extends Activity implements RecycleAdapter.RecycleonclickListener, RecycleAdapter.RecycleonLongclickListener{
+public class MainActivity extends BaseActivity implements RecycleAdapter.RecycleonclickListener, RecycleAdapter.RecycleonLongclickListener{
 
     private RecyclerView hrecyclerView;
     private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "litepal", "ORMLite", "RxJava", "Views", "MPAndroidChart", "LockView", "十"};//按钮为例
@@ -57,6 +58,10 @@ public class MainActivity extends Activity implements RecycleAdapter.Recycleoncl
             datas.add(buts[i]);
         }
         initViews();//初始化
+        //开启服务
+        Intent intent=new Intent(MainActivity.this,LockService.class);
+        startService(intent);
+
     }
 
     private void initViews(){
@@ -216,7 +221,6 @@ public class MainActivity extends Activity implements RecycleAdapter.Recycleoncl
 
     @Override
     protected void onDestroy(){
-        super.onDestroy();
         position = linearmanager.findFirstVisibleItemPosition();//屏幕显示的position
         View view = linearmanager.findViewByPosition(position);
         if(view != null){
@@ -231,6 +235,12 @@ public class MainActivity extends Activity implements RecycleAdapter.Recycleoncl
         edit.commit();
         //退出时将list数据重新存入数据库，保存list的顺序
         updqtedb();
+
+
+        //关闭服务
+        Intent intent=new Intent(MainActivity.this, LockService.class);
+        stopService(intent);
+        super.onDestroy();
     }
 
     //更新数据库
@@ -244,4 +254,5 @@ public class MainActivity extends Activity implements RecycleAdapter.Recycleoncl
             database.execSQL("insert into recyclerlist (reid,name) values (11,'" + Arrays.toString(sss) + "')");
         }
     }
+
 }

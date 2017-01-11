@@ -1,18 +1,18 @@
 package com.example.aozun.testapplication;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.aozun.testapplication.activity.BaseActivity;
 import com.example.aozun.testapplication.utils.OkHttpClientManager;
 
 /**
  * okhttp加载图片
  */
-public class OkHttpActivity extends Activity implements View.OnClickListener{
+public class OkHttpActivity extends BaseActivity implements View.OnClickListener{
     private Button otbut;
     private ImageView imageView;
     private static final String url="http://img3.fengniao.com/travel/2_960/1850.jpg";

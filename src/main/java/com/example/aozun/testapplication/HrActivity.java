@@ -1,16 +1,17 @@
 package com.example.aozun.testapplication;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
 
+import com.example.aozun.testapplication.activity.BaseActivity;
 import com.example.aozun.testapplication.adapter.ImageAdapterSerial;
 import com.example.aozun.testapplication.views.HrglView;
 
 /**
  * Created by HHD-H-I-0369 on 2016/11/22.
+ * 画廊效果页面
  */
-public class HrActivity extends Activity{
+public class HrActivity extends BaseActivity{
     private int images[]={R.mipmap.rongguangwen,R.mipmap.dg,R.mipmap.dsadads,R.mipmap.hfhh,R.mipmap.kiklhkjhkjk};
     private String [] Strings={"刘峰","赵开桢","","宋义魁","胡丹"};
     private HrglView hrglView;

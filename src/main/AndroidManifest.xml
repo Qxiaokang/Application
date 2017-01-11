@@ -3,14 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:versionCode="1"
     android:versionName="1.0">
-
+    <!--网络权限-->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!--sd卡权限-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name="org.litepal.LitePalApplication"
-
         android:allowBackup="true"
         android:icon="@drawable/test"
         android:label="@string/app_name"
@@ -24,37 +24,56 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <!--日期选择页面-->
         <activity
             android:name=".FirstActivity"
             android:screenOrientation="landscape" />
+        <!--自定义画廊效果页面-->
         <activity
             android:name=".HrActivity"
             android:screenOrientation="landscape" />
+        <!--okHttp网络请求-->
         <activity
             android:name=".OkHttpActivity"
             android:screenOrientation="landscape" />
+        <!--ORMLite操作数据库-->
         <activity
             android:name=".activity.ORMLiteActivity"
             android:screenOrientation="landscape" />
+        <!--litePal操作数据库-->
         <activity
             android:name=".activity.LitePalActivity"
             android:screenOrientation="landscape" />
+        <!--rxjava rxAndroid异步操作页面-->
         <activity
             android:name=".activity.RxActivtity"
             android:screenOrientation="landscape" />
+        <!--密码验证页面-->
         <activity
             android:name=".activity.ViewActivity"
             android:screenOrientation="landscape" />
+        <!--视频弹幕效果页面-->
         <activity
             android:name=".activity.VideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.MPChartActivity"
-            android:screenOrientation="landscape"
-            />
-        <activity android:name=".activity.Retrofit2Activity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".activity.BaseActivity"/>
+        <!--图表绘制页面-->
+        <activity
+            android:name=".activity.MPChartActivity"
+            android:screenOrientation="landscape" />
+        <!--retrofit网络请求页面-->
+        <activity
+            android:name=".activity.Retrofit2Activity"
+            android:screenOrientation="landscape" />
+        <!--activity基类-->
+        <activity android:name=".activity.BaseActivity" />
+        <!--锁屏的页面-->
+        <activity
+            android:name=".activity.LockActivity"
+            android:screenOrientation="landscape" />
+        <!--监听锁屏的服务-->
+        <service
+            android:name=".service.LockService"
+            android:enabled="true" />
     </application>
 </manifest>

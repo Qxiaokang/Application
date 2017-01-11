@@ -1,7 +1,6 @@
 package com.example.aozun.testapplication.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -32,7 +31,7 @@ import java.util.List;
 
  2)  修改litepal.xml文件中的版本号，需要+1
  */
-public class LitePalActivity extends AppCompatActivity implements View.OnClickListener{
+public class LitePalActivity extends BaseActivity implements View.OnClickListener{
     private Button add_bt, delete_bt, update_bt, query_bt;
     private TextView content_tv;//内容
     private List<Books> books;

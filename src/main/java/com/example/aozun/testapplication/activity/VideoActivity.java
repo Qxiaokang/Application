@@ -1,6 +1,5 @@
 package com.example.aozun.testapplication.activity;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
@@ -27,7 +26,7 @@ import master.flame.danmaku.ui.widget.DanmakuView;
 /**
  * 简单的弹幕效果
  */
-public class VideoActivity extends Activity implements DrawHandler.Callback, View.OnClickListener{
+public class VideoActivity extends BaseActivity implements DrawHandler.Callback, View.OnClickListener{
     private VideoView videoView;
     private DanmakuView danmakuView;
     private boolean showDanmaku;

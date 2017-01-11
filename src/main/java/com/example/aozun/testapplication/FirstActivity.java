@@ -1,12 +1,12 @@
 package com.example.aozun.testapplication;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
 import com.example.aozun.testapplication.DateSlider.DateSlider;
 import com.example.aozun.testapplication.DateSlider.MonthYearDateSlider;
+import com.example.aozun.testapplication.activity.BaseActivity;
 import com.example.aozun.testapplication.dialog.IDDatePickerDialog;
 
 import java.util.Calendar;
@@ -14,7 +14,7 @@ import java.util.Calendar;
 /**日期选择
  * Created by HHD-H-I-0369 on 2016/11/18.
  */
-public class FirstActivity extends Activity implements View.OnClickListener{
+public class FirstActivity extends BaseActivity implements View.OnClickListener{
     private EditText et = null, idtext;
 
     @Override

@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.antfortune.freeline'
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
 
     defaultConfig {
         applicationId "com.example.aozun.testapplication"
-        minSdkVersion 12
+        minSdkVersion 14
         targetSdkVersion 24
     }
 
@@ -48,6 +48,8 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+
+
 }
 
 
