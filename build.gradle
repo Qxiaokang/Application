@@ -17,6 +17,10 @@ android {
         }
     }
 
+    freeline{
+        hack true
+    }
+
 }
 repositories {
     maven { url "https://jitpack.io" }
@@ -49,7 +53,7 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
-
+    compile 'com.antfortune.freeline:runtime:0.8.4'
 }
 
 
