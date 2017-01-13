@@ -3,27 +3,29 @@ package com.example.aozun.testapplication.views;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.example.aozun.testapplication.R;
+import com.example.aozun.testapplication.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by HHD-H-I-0369 on 2017/1/10.
+ * 存放GestureLockView的布局
  */
 public class GestureLockViewGroup extends RelativeLayout
 {
 
-    private static final String TAG = "GestureLockViewGroup";
+    private static final String TAG = "GestureLockViewGroup-->";
     /**
      * 保存所有的GestureLockView
      */
@@ -54,19 +56,19 @@ public class GestureLockViewGroup extends RelativeLayout
     /**
      * GestureLockView无手指触摸的状态下内圆的颜色
      */
-    private int mNoFingerInnerCircleColor = 0xFF939090;
+    private int mNoFingerInnerCircleColor = Color.GRAY;
     /**
      * GestureLockView无手指触摸的状态下外圆的颜色
      */
-    private int mNoFingerOuterCircleColor = 0xFFE0DBDB;
+    private int mNoFingerOuterCircleColor = Color.BLACK;
     /**
      * GestureLockView手指触摸的状态下内圆和外圆的颜色
      */
-    private int mFingerOnColor = 0xFF378FC9;
+    private int mFingerOnColor = Color.GREEN;
     /**
      * GestureLockView手指抬起的状态下内圆和外圆的颜色
      */
-    private int mFingerUpColor = 0xFFFF0000;
+    private int mFingerUpColor = Color.RED;
 
     /**
      * 宽度
@@ -167,7 +169,7 @@ public class GestureLockViewGroup extends RelativeLayout
 
         // Log.e(TAG, mWidth + "");
         // Log.e(TAG, mHeight + "");
-
+        //取最小值
         mHeight = mWidth = mWidth < mHeight ? mWidth : mHeight;
 
         // setMeasuredDimension(mWidth, mHeight);
@@ -229,7 +231,7 @@ public class GestureLockViewGroup extends RelativeLayout
                 addView(mGestureLockViews[i], lockerParams);
             }
 
-            Log.e(TAG, "mWidth = " + mWidth + " ,  mGestureViewWidth = "
+            LogUtils.e(TAG+ "mWidth = " + mWidth + " ,  mGestureViewWidth = "
                     + mGestureLockViewWidth + " , mMarginBetweenLockView = "
                     + mMarginBetweenLockView);
 
@@ -297,8 +299,8 @@ public class GestureLockViewGroup extends RelativeLayout
                     }
                 }
 
-                Log.e(TAG, "mUnMatchExceedBoundary = " + mTryTimes);
-                Log.e(TAG, "mChoose = " + mChoose);
+                LogUtils.e(TAG+"mUnMatchExceedBoundary = " + mTryTimes);
+                LogUtils.e(TAG+"mChoose = " + mChoose);
                 // 将终点设置位置为起点，即取消指引线
                 mTmpTarget.x = mLastPathX;
                 mTmpTarget.y = mLastPathY;

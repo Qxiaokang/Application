@@ -39,7 +39,7 @@ import java.util.Map;
 public class MainActivity extends BaseActivity implements RecycleAdapter.RecycleonclickListener, RecycleAdapter.RecycleonLongclickListener{
 
     private RecyclerView hrecyclerView;
-    private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "litepal", "ORMLite", "RxJava", "Views", "MPAndroidChart", "LockView", "十"};//按钮为例
+    private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "litepal", "ORMLite", "RxJava", "Views", "MPAndroidChart", "LockView", "DiscrollVableView"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
     private List<String> datas = new ArrayList<>();
@@ -52,6 +52,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         database = TestOpenHelp.getInstance(this).getWritableDatabase();
         //初始化list
         for(int i = 0; i < buts.length; i++){

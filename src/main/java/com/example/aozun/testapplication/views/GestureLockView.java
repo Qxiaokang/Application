@@ -8,6 +8,7 @@ import android.view.View;
 
 /**
  * Created by HHD-H-I-0369 on 2017/1/10.
+ *自定义手势，绘制单个圆
  */
 public class GestureLockView extends View{
     private static final String TAG = "GestureLockView";
