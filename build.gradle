@@ -8,18 +8,19 @@ android {
         applicationId "com.example.aozun.testapplication"
         minSdkVersion 14
         targetSdkVersion 24
+        multiDexEnabled true
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true //混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
 
-    freeline{
+   /* freeline{
         hack true
-    }
+    }*/
 
 }
 repositories {
@@ -53,7 +54,7 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
-    compile 'com.antfortune.freeline:runtime:0.8.4'
+    //compile 'com.antfortune.freeline:runtime:0.8.4'
 }
 
 
