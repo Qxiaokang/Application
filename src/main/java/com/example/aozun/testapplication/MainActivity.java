@@ -15,10 +15,12 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.aozun.testapplication.activity.BaseActivity;
+import com.example.aozun.testapplication.activity.DiscrollActivity;
 import com.example.aozun.testapplication.activity.LitePalActivity;
 import com.example.aozun.testapplication.activity.LockActivity;
 import com.example.aozun.testapplication.activity.MPChartActivity;
 import com.example.aozun.testapplication.activity.ORMLiteActivity;
+import com.example.aozun.testapplication.activity.RenRenActivity;
 import com.example.aozun.testapplication.activity.Retrofit2Activity;
 import com.example.aozun.testapplication.activity.RxActivtity;
 import com.example.aozun.testapplication.activity.ViewActivity;
@@ -39,7 +41,7 @@ import java.util.Map;
 public class MainActivity extends BaseActivity implements RecycleAdapter.RecycleonclickListener, RecycleAdapter.RecycleonLongclickListener{
 
     private RecyclerView hrecyclerView;
-    private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "litepal", "ORMLite", "RxJava", "Views", "MPAndroidChart", "LockView", "DiscrollVableView"};//按钮为例
+    private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "litepal", "ORMLite", "RxJava", "Views", "MPAndroidChart", "LockView", "Discroll","RenRenActivity"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
     private List<String> datas = new ArrayList<>();
@@ -145,6 +147,12 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
             }
             if(data.equals(buts[9])){
                 intent=new Intent(MainActivity.this, LockActivity.class);
+            }
+            if(data.equals(buts[10])){
+                intent=new Intent(MainActivity.this, DiscrollActivity.class);
+            }
+            if(data.equals(buts[11])){
+                intent=new Intent(MainActivity.this,RenRenActivity.class);
             }
             if(intent != null){
                 MainActivity.this.startActivity(intent);

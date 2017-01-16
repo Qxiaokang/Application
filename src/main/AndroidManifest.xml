@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:versionCode="1"
     android:versionName="1.0">
-    <!--网络权限-->
+    <!-- 网络权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--sd卡权限-->
+    <!-- sd卡权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -24,56 +24,61 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--日期选择页面-->
+        <!-- 日期选择页面 -->
         <activity
             android:name=".FirstActivity"
             android:screenOrientation="landscape" />
-        <!--自定义画廊效果页面-->
+        <!-- 自定义画廊效果页面 -->
         <activity
             android:name=".HrActivity"
             android:screenOrientation="landscape" />
-        <!--okHttp网络请求-->
+        <!-- okHttp网络请求 -->
         <activity
             android:name=".OkHttpActivity"
             android:screenOrientation="landscape" />
-        <!--ORMLite操作数据库-->
+        <!-- ORMLite操作数据库 -->
         <activity
             android:name=".activity.ORMLiteActivity"
             android:screenOrientation="landscape" />
-        <!--litePal操作数据库-->
+        <!-- litePal操作数据库 -->
         <activity
             android:name=".activity.LitePalActivity"
             android:screenOrientation="landscape" />
-        <!--rxjava rxAndroid异步操作页面-->
+        <!-- rxjava rxAndroid异步操作页面 -->
         <activity
             android:name=".activity.RxActivtity"
             android:screenOrientation="landscape" />
-        <!--密码验证页面-->
+        <!-- 密码验证页面 -->
         <activity
             android:name=".activity.ViewActivity"
             android:screenOrientation="landscape" />
-        <!--视频弹幕效果页面-->
+        <!-- 视频弹幕效果页面 -->
         <activity
             android:name=".activity.VideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape" />
-        <!--图表绘制页面-->
+        <!-- 图表绘制页面 -->
         <activity
             android:name=".activity.MPChartActivity"
             android:screenOrientation="landscape" />
-        <!--retrofit网络请求页面-->
+        <!-- retrofit网络请求页面 -->
         <activity
             android:name=".activity.Retrofit2Activity"
             android:screenOrientation="landscape" />
-        <!--activity基类-->
+        <!-- activity基类 -->
         <activity android:name=".activity.BaseActivity" />
-        <!--锁屏的页面-->
+        <!-- 锁屏的页面 -->
         <activity
             android:name=".activity.LockActivity"
             android:screenOrientation="landscape" />
-        <!--监听锁屏的服务-->
+        <!-- 自定义scrollview页面 -->
+        <activity
+            android:name=".activity.DiscrollActivity"
+            android:screenOrientation="landscape" />
+        <!-- 监听锁屏的服务 -->
         <service
             android:name=".service.LockService"
             android:enabled="true" />
+        <activity android:name=".activity.RenRenActivity"></activity>
     </application>
 </manifest>
