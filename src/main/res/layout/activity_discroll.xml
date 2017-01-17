@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xiao="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.example.aozun.testapplication.views.DiscrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        >
+        <com.example.aozun.testapplication.views.DiscrollViewContent
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="800dp"
+                android:layout_marginTop="@dimen/margin"
+                android:gravity="center"
+                android:text="waitting..."
+                android:textSize="@dimen/btDB_size"
+
+                />
+
+            <TextView
+                android:id="@+id/title_discroll_tv"
+                android:layout_width="450dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Never know what is forever! Wait until I meet you!"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/content_size"
+                xiao:discrollve_alpha="true"
+                xiao:discrollve_translation="fromBottom|fromRight" />
+
+            <ImageView
+                android:layout_width="450dp"
+                android:layout_height="800dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ring"
+                xiao:discrollve_alpha="true"
+                xiao:discrollve_translation="fromBottom|fromLeft" />
+
+            <TextView
+                android:id="@+id/content_discroll_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="I want to put on wedding dress for you!"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/content_size"
+                xiao:discrollve_alpha="true"
+                xiao:discrollve_translation="fromBottom|fromRight" />
+
+            <ImageView
+                android:layout_width="450dp"
+                android:layout_height="800dp"
+                android:layout_gravity="center"
+                android:src="@drawable/wedding"
+                xiao:discrollve_alpha="true"
+                xiao:discrollve_translation="fromBottom|fromLeft" />
+
+            <TextView
+                android:id="@+id/end_discroll_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Will you marry me!"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/content_size"
+                xiao:discrollve_alpha="true"
+                xiao:discrollve_translation="fromBottom|fromRight" />
+
+            <ImageView
+                android:layout_width="450dp"
+                android:layout_height="800dp"
+                android:layout_gravity="center"
+                android:src="@drawable/heart"
+                xiao:discrollve_alpha="true"
+                xiao:discrollve_translation="fromBottom|fromLeft" />
+        </com.example.aozun.testapplication.views.DiscrollViewContent>
+    </com.example.aozun.testapplication.views.DiscrollView>
+</LinearLayout>

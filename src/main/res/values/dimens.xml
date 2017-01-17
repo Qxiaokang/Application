@@ -8,4 +8,5 @@
     <dimen name="btDB_size">35dp</dimen>
     <dimen name="margin">20dp</dimen>
     <dimen name="pic_width">200dp</dimen>
+    <dimen name="padding_text">5dp</dimen>
 </resources>

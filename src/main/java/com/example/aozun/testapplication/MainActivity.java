@@ -24,6 +24,7 @@ import com.example.aozun.testapplication.activity.RenRenActivity;
 import com.example.aozun.testapplication.activity.Retrofit2Activity;
 import com.example.aozun.testapplication.activity.RxActivtity;
 import com.example.aozun.testapplication.activity.ViewActivity;
+import com.example.aozun.testapplication.activity.ViewFlipperActivity;
 import com.example.aozun.testapplication.adapter.RecycleAdapter;
 import com.example.aozun.testapplication.db.TestOpenHelp;
 import com.example.aozun.testapplication.service.LockService;
@@ -41,7 +42,9 @@ import java.util.Map;
 public class MainActivity extends BaseActivity implements RecycleAdapter.RecycleonclickListener, RecycleAdapter.RecycleonLongclickListener{
 
     private RecyclerView hrecyclerView;
-    private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "litepal", "ORMLite", "RxJava", "Views", "MPAndroidChart", "LockView", "Discroll","RenRenActivity"};//按钮为例
+    private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "litepal",
+            "ORMLite", "RxJava", "Views", "MPAndroidChart", "LockView", "Discroll",
+            "RenRenActivity","ViewFlipper"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
     private List<String> datas = new ArrayList<>();
@@ -108,7 +111,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
         itemTouchHelper.attachToRecyclerView(hrecyclerView);
         Log.e("onCreate:", "position:" + position1 + "left:" + left1);
     }
-
+    //点击item
     @Override
     public void onitemListener(View view, String data){
         Intent intent = null;
@@ -153,6 +156,9 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
             }
             if(data.equals(buts[11])){
                 intent=new Intent(MainActivity.this,RenRenActivity.class);
+            }
+            if(data.equals(buts[12])){
+                intent=new Intent(MainActivity.this, ViewFlipperActivity.class);
             }
             if(intent != null){
                 MainActivity.this.startActivity(intent);

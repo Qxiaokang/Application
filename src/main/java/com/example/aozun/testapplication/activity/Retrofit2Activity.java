@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.aozun.testapplication.MainApplication;
 import com.example.aozun.testapplication.R;
 import com.example.aozun.testapplication.bean.BookSearchResponse;
 import com.example.aozun.testapplication.utils.LogUtils;
@@ -64,8 +65,8 @@ public class Retrofit2Activity extends BaseActivity implements View.OnClickListe
             tv.setText("  作者简介："+books.get(i).getAuthor_intro()+"\n\n\n  概要："+books.get(i).getSummary());
             imageView.setLayoutParams(layoutParams);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            initImageloaders();
-            ImageLoader.getInstance().displayImage(books.get(i).getImage(),imageView,getOptions());
+
+            ImageLoader.getInstance().displayImage(books.get(i).getImage(),imageView, MainApplication.getCircleOptions());
             linearLayout.addView(imageView);
             linearLayout.addView(textView);
             linearLayout.addView(tv);
