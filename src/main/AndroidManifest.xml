@@ -50,7 +50,7 @@
             android:screenOrientation="landscape" />
         <!-- 密码验证页面 -->
         <activity
-            android:name=".activity.ViewActivity"
+            android:name=".activity.PwdViewActivity"
             android:screenOrientation="landscape" />
         <!-- 视频弹幕效果页面 -->
         <activity

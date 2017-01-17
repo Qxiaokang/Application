@@ -48,12 +48,18 @@ public class ViewFlipperActivity extends BaseActivity{
         tvContent1.setText("iphone 8 曝光， 史上最美！");
         title_tv= (TextView) view1.findViewById(R.id.title_item);
         title_tv.setText("惊喜");
+        title_tv1= (TextView) view1.findViewById(R.id.title_item1);
+        title_tv1.setText("惊喜");
         tvContent.setText("iphone 8 曝光， 史上最美！");
         viewFlipper.addView(view1);
 
         View view2=View.inflate(this,R.layout.viewflipper_item,null);
         tvContent = (TextView) view2.findViewById(R.id.flipper_content_tv);
         tvContent1 = (TextView) view2.findViewById(R.id.flipper_content_tv1);
+        title_tv= (TextView) view2.findViewById(R.id.title_item);
+        title_tv1= (TextView) view2.findViewById(R.id.title_item1);
+        title_tv.setText("活动");
+        title_tv1.setText("热卖");
         tvContent1.setText("比奥迪A7还贵，上市第一天卖了27万！");
         tvContent.setText("比奥迪A7还贵，上市第一天卖了27万！");
         viewFlipper.addView(view2);

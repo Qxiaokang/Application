@@ -40,8 +40,8 @@ public class LitePalActivity extends BaseActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lite_pal);
-        Connector.getDatabase();//创建数据库
-        initViews();
+        Connector.getDatabase();//创建数据库，
+        initViews();//初始化
     }
 
     private void initViews(){
