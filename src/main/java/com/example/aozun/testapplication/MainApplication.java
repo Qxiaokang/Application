@@ -1,6 +1,5 @@
 package com.example.aozun.testapplication;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -11,7 +10,6 @@ import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import org.litepal.LitePalApplication;
-import org.litepal.exceptions.GlobalException;
 
 import java.io.File;
 
@@ -20,24 +18,6 @@ import java.io.File;
  *
  */
 public class MainApplication extends LitePalApplication{
-    private static Context mContext;
-
-    public MainApplication() {
-        mContext = this;
-    }
-
-    public static Context getContext() {
-        if(mContext == null) {
-            throw new GlobalException("Application context is null. Maybe you haven\'t configured your application name with \"org.litepal.LitePalApplication\" in your AndroidManifest.xml. Or you can write your own application class, but remember to extend LitePalApplication as parent class.");
-        } else {
-            return mContext;
-        }
-    }
-
-    public void onLowMemory() {
-        super.onLowMemory();
-        mContext = this.getApplicationContext();
-    }
 
     @Override
     public void onCreate(){
@@ -94,7 +74,7 @@ public class MainApplication extends LitePalApplication{
                 .writeDebugLogs().build();*/
         ImageLoader.getInstance().init(configuration);
     }
-
+    //圆形图
     public static DisplayImageOptions getCircleOptions(){
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 // 正在加载时显示的占位图
@@ -137,7 +117,7 @@ public class MainApplication extends LitePalApplication{
                 .handler(new Handler())*/
     }
 
-
+    //方形图
     public static DisplayImageOptions getOptions(){
         DisplayImageOptions options=new DisplayImageOptions.Builder()
                 .showImageForEmptyUri(R.drawable.normal)

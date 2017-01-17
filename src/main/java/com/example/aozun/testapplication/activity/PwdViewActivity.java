@@ -14,7 +14,7 @@ import com.jungly.gridpasswordview.PasswordType;
  * Created by HHD-H-I-0369 on 2017/1/3.
  * 密码验证页
  */
-public class ViewActivity extends BaseActivity implements GridPasswordView.OnPasswordChangedListener, View.OnClickListener{
+public class PwdViewActivity extends BaseActivity implements GridPasswordView.OnPasswordChangedListener, View.OnClickListener{
     private GridPasswordView passwordView;
     private Button startVideo;
     private String pwdString = null;

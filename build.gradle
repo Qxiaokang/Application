@@ -44,17 +44,19 @@ dependencies {
     //compile 'com.kymjs.rxvolley:okhttp:1.1.4'
     //compile 'com.trello:rxlifecycle-components:0.6.1'
     compile 'com.jungly:gridPasswordView:0.3'
-    compile 'com.github.ctiao:DanmakuFlameMaster:0.5.3'
     //弹幕
-    compile 'com.github.PhilJay:MPAndroidChart:v2.1.6'
+    compile 'com.github.ctiao:DanmakuFlameMaster:0.5.3'
     //图表
-    //retrofit2请求
+    compile 'com.github.PhilJay:MPAndroidChart:v2.1.6'
+
+    //retrofit2网络请求
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
     //compile 'com.antfortune.freeline:runtime:0.8.4'
+    //compile project(':leakcanary')//检测内存泄漏
 }
 
 

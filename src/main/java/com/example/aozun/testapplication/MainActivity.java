@@ -23,7 +23,7 @@ import com.example.aozun.testapplication.activity.ORMLiteActivity;
 import com.example.aozun.testapplication.activity.RenRenActivity;
 import com.example.aozun.testapplication.activity.Retrofit2Activity;
 import com.example.aozun.testapplication.activity.RxActivtity;
-import com.example.aozun.testapplication.activity.ViewActivity;
+import com.example.aozun.testapplication.activity.PwdViewActivity;
 import com.example.aozun.testapplication.activity.ViewFlipperActivity;
 import com.example.aozun.testapplication.adapter.RecycleAdapter;
 import com.example.aozun.testapplication.db.TestOpenHelp;
@@ -42,8 +42,8 @@ import java.util.Map;
 public class MainActivity extends BaseActivity implements RecycleAdapter.RecycleonclickListener, RecycleAdapter.RecycleonLongclickListener{
 
     private RecyclerView hrecyclerView;
-    private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "litepal",
-            "ORMLite", "RxJava", "Views", "MPAndroidChart", "LockView", "Discroll",
+    private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "Litepal",
+            "ORMLite", "RxJava", "PwdView", "MPAndroidChart", "LockView", "Discroll",
             "RenRenActivity","ViewFlipper"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
@@ -143,7 +143,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
                 intent=new Intent(MainActivity.this, RxActivtity.class);
             }
             if(data.equals(buts[7])){
-                intent=new Intent(MainActivity.this,ViewActivity.class);
+                intent=new Intent(MainActivity.this,PwdViewActivity.class);
             }
             if(data.equals(buts[8])){
                 intent=new Intent(MainActivity.this,MPChartActivity.class);

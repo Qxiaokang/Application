@@ -12,7 +12,7 @@ import com.example.aozun.testapplication.views.HrglView;
  * 画廊效果页面
  */
 public class HrActivity extends BaseActivity{
-    private int images[]={R.mipmap.rongguangwen,R.mipmap.dg,R.mipmap.dsadads,R.mipmap.hfhh,R.mipmap.kiklhkjhkjk};
+    private int images[]={R.drawable.rongguangwen,R.drawable.dg,R.drawable.dsadads,R.drawable.hfhh,R.drawable.kiklhkjhkjk};
     private String [] Strings={"刘峰","赵开桢","","宋义魁","胡丹"};
     private HrglView hrglView;
     @Override
