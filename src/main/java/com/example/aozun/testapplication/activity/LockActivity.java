@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.Toast;
 
+import com.example.aozun.testapplication.MainActivity;
 import com.example.aozun.testapplication.R;
 import com.example.aozun.testapplication.service.LockService;
+import com.example.aozun.testapplication.utils.LogUtils;
 import com.example.aozun.testapplication.views.GestureLockViewGroup;
 /**
  * 手势锁页面
@@ -16,13 +18,21 @@ public class LockActivity extends BaseActivity{
     private GestureLockViewGroup lockViewGroup;
     private boolean lock=true;
     private Intent intent;
+    private boolean islogin=true;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_lock);
+        int pwdtime = applicationShared.getInt("pwdtimes", 0);
+        LogUtils.d("pwdtime:"+ pwdtime);
         intent=new Intent(this, LockService.class);
-        stopService(intent);//进入锁屏后关闭锁屏监听
+        if(pwdtime==0){
+            islogin=true;
+        }else {
+            islogin=false;
+            stopService(intent);//进入锁屏后关闭锁屏监听
+        }
         initViews();
     }
 
@@ -42,7 +52,17 @@ public class LockActivity extends BaseActivity{
                     Toast.makeText(LockActivity.this, "密码验证成功", Toast.LENGTH_LONG).show();
                     lock=false;
                     LockActivity.this.startService(intent);
-                    LockActivity.this.finish();
+                    //第一次登录的lock
+                    if(islogin){
+                        intent=new Intent(LockActivity.this, MainActivity.class);
+                        LockActivity.this.startActivity(intent);
+                        LockActivity.this.finish();
+                    }
+                    //不是登录的lock,直接finish
+                    else{
+                        LockActivity.this.finish();
+                    }
+
                 }else{
                     Toast.makeText(LockActivity.this, "密码验证失败，请重新验证", Toast.LENGTH_LONG).show();
                     lock=true;
@@ -59,10 +79,32 @@ public class LockActivity extends BaseActivity{
 
     @Override
     public void onBackPressed(){
-        if(!lock){
+        LogUtils.i("lockactivity---onBackPressed");
+        if(!lock||(lock&&islogin)){
            super.onBackPressed();
         }else {
             Toast.makeText(LockActivity.this,"请验证密码",Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    protected void onDestroy(){
+        LogUtils.e("lock_destroy");
+        //不是登录，正常关闭时保存pwdtimes
+        if(!islogin){
+            applicationShared.edit().putInt("pwdtimes",1);
+        }
+        super.onDestroy();
+    }
+
+
+    @Override
+    protected void onStop(){
+        LogUtils.d("lock_onStop");
+        //防止强制退出，登录状态未更改
+        if(applicationShared.getInt("pwdtimes",0)==1&&!islogin){
+            applicationShared.edit().putInt("pwdtimes",0).commit();
+        }
+        super.onStop();
     }
 }

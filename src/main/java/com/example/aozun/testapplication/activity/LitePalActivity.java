@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.example.aozun.testapplication.R;
 import com.example.aozun.testapplication.bean.Books;
+import com.example.aozun.testapplication.utils.LogUtils;
 
 import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
@@ -113,5 +114,11 @@ public class LitePalActivity extends BaseActivity implements View.OnClickListene
                 content_tv.setText(stringBuilder.toString());
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        LogUtils.i("litepal---ondestroy");
     }
 }
