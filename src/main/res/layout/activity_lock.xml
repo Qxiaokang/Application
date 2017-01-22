@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.aozun.testapplication.activity.LockActivity"
-    android:background="@drawable/timg"
+    android:background="@drawable/systembg"
     >
    <com.example.aozun.testapplication.views.GestureLockViewGroup
        android:id="@+id/GestureLockViewGroup_id"

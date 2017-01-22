@@ -57,16 +57,13 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        applicationShared.edit().putInt("pwdtimes",1).commit();//记录登入
         database = TestOpenHelp.getInstance(this).getWritableDatabase();
         //初始化list
         for(int i = 0; i < buts.length; i++){
             datas.add(buts[i]);
         }
         initViews();//初始化
-        //开启服务
-        Intent intent=new Intent(MainActivity.this,LockService.class);
-        startService(intent);
 
     }
 
@@ -241,7 +238,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
         if(view != null){
             left = view.getLeft();
         }
-        Log.e("print:", "position:" + position + "left:" + left);
+        Log.e("print:", "position:" + position + "left:" + left+"--------MainActivityonDestroy()");
         //用sharePreferences存储recyclerView的位置
         SharedPreferences sharedPreferences = getSharedPreferences("num", MODE_PRIVATE);
         SharedPreferences.Editor edit = sharedPreferences.edit();
@@ -255,6 +252,8 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
         //关闭服务
         Intent intent=new Intent(MainActivity.this, LockService.class);
         stopService(intent);
+
+        applicationShared.edit().putInt("pwdtimes",0).commit();//记录登出
         super.onDestroy();
     }
 

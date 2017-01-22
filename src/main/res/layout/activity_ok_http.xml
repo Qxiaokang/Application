@@ -6,20 +6,45 @@
     android:orientation="vertical"
     tools:context="com.example.aozun.testapplication.OkHttpActivity">
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bt_width"
         android:layout_margin="10dp"
         android:id="@+id/okhttpbut"
         android:text="加载图片"
         android:background="@drawable/btn_style1"
         android:textSize="20dp"
+        android:gravity="center"
         />
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:id="@+id/imageid"
-        android:layout_margin="10dp"
-        android:layout_gravity="center"
-        />
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/imageid"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/glide_iv"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/picasso_iv"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
 </LinearLayout>

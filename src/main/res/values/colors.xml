@@ -11,5 +11,7 @@
     <color name="colorBlack">#2B2B2B</color>
     <color name="transparent">#00000000</color>
     <color name="np_numberpicker_selection_divider">#1c96e2</color>
+    <color name="colorgreen">#32CA42</color>
+    <color name="colorRed">#FF0000</color>
 
 </resources>

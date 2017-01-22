@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="200dp"
-    android:layout_height="200dp"
+    android:layout_width="@dimen/bt_big_width"
+    android:layout_height="@dimen/bt_big_width"
     android:gravity="center"
     >
     <Button
         android:id="@+id/recybt"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="50dp"
+        android:layout_margin="@dimen/bt_big_margin"
         android:gravity="center"
         android:textStyle="bold"
-        android:textSize="20dp"
-        android:textColor="@color/colorwhite"
-        android:background="@drawable/btn_style1"
+        android:textSize="@dimen/content_size"
+        android:textColor="@color/bt_textvcolor1"
+        android:background="@drawable/btn_style2"
         android:singleLine="true"
         android:ellipsize="end"
+
         />
         <!--android:singleLine="true"
         android:focusable="true"
