@@ -238,6 +238,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
         if(view != null){
             left = view.getLeft();
         }
+        applicationShared.edit().putInt("pwdtimes",0).commit();//记录登出
         Log.e("print:", "position:" + position + "left:" + left+"--------MainActivityonDestroy()");
         //用sharePreferences存储recyclerView的位置
         SharedPreferences sharedPreferences = getSharedPreferences("num", MODE_PRIVATE);
@@ -253,7 +254,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
         Intent intent=new Intent(MainActivity.this, LockService.class);
         stopService(intent);
 
-        applicationShared.edit().putInt("pwdtimes",0).commit();//记录登出
+
         super.onDestroy();
     }
 
