@@ -17,14 +17,14 @@ import android.widget.Toast;
 import com.example.aozun.testapplication.activity.BaseActivity;
 import com.example.aozun.testapplication.activity.DiscrollActivity;
 import com.example.aozun.testapplication.activity.LitePalActivity;
-import com.example.aozun.testapplication.activity.LockActivity;
 import com.example.aozun.testapplication.activity.MPChartActivity;
 import com.example.aozun.testapplication.activity.ORMLiteActivity;
+import com.example.aozun.testapplication.activity.PwdViewActivity;
 import com.example.aozun.testapplication.activity.RenRenActivity;
 import com.example.aozun.testapplication.activity.Retrofit2Activity;
 import com.example.aozun.testapplication.activity.RxActivtity;
-import com.example.aozun.testapplication.activity.PwdViewActivity;
 import com.example.aozun.testapplication.activity.ViewFlipperActivity;
+import com.example.aozun.testapplication.activity.ZxingActivity;
 import com.example.aozun.testapplication.adapter.RecycleAdapter;
 import com.example.aozun.testapplication.db.TestOpenHelp;
 import com.example.aozun.testapplication.service.LockService;
@@ -43,7 +43,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
 
     private RecyclerView hrecyclerView;
     private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "Litepal",
-            "ORMLite", "RxJava", "PwdView", "MPAndroidChart", "LockView", "Discroll",
+            "ORMLite", "RxJava", "PwdView", "MPAndroidChart", "Zxing", "Discroll",
             "RenRenActivity","ViewFlipper"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
@@ -146,7 +146,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
                 intent=new Intent(MainActivity.this,MPChartActivity.class);
             }
             if(data.equals(buts[9])){
-                intent=new Intent(MainActivity.this, LockActivity.class);
+                intent=new Intent(MainActivity.this, ZxingActivity.class);
             }
             if(data.equals(buts[10])){
                 intent=new Intent(MainActivity.this, DiscrollActivity.class);

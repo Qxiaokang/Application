@@ -6,6 +6,12 @@
     <!-- sd卡权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--振动权限-->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <!--相机权限-->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:name=".MainApplication"
@@ -77,11 +83,22 @@
         <service
             android:name=".service.LockService"
             android:enabled="true" />
-        <!---->
+        <!--  -->
         <activity android:name=".activity.RenRenActivity" />
-        <!--垂直滚动广告条页面-->
-        <activity android:name=".activity.ViewFlipperActivity"
+        <!-- 垂直滚动广告条页面 -->
+        <activity
+            android:name=".activity.ViewFlipperActivity"
+            android:screenOrientation="landscape" />
+        <!--二维码扫描页面-->
+        <activity android:name=".activity.ZxingActivity"
             android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             ></activity>
+        <activity android:name="zxing.MipcaActivityCapture"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            />
+
     </application>
 </manifest>

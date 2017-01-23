@@ -51,7 +51,6 @@ dependencies {
     compile 'com.github.ctiao:DanmakuFlameMaster:0.5.3'
     //图表
     compile 'com.github.PhilJay:MPAndroidChart:v2.1.6'
-
     //retrofit2网络请求
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
@@ -60,10 +59,9 @@ dependencies {
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.squareup.picasso:picasso:2.5.1'
     compile 'com.github.bumptech.glide:glide:3.5.2'
-
     //compile 'com.antfortune.freeline:runtime:0.8.4'
     //compile project(':leakcanary')//检测内存泄漏
-
+    compile files('libs/zxing.jar')
 }
 
 
