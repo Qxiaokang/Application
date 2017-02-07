@@ -28,6 +28,7 @@ import com.example.aozun.testapplication.activity.ZxingActivity;
 import com.example.aozun.testapplication.adapter.RecycleAdapter;
 import com.example.aozun.testapplication.db.TestOpenHelp;
 import com.example.aozun.testapplication.service.LockService;
+import com.example.aozun.testapplication.utils.MainApplication;
 import com.example.aozun.testapplication.utils.Netutil;
 
 import java.util.ArrayList;
@@ -57,6 +58,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MainApplication.getInstance().addActivity(this);
         applicationShared.edit().putInt("pwdtimes",1).commit();//记录登入
         database = TestOpenHelp.getInstance(this).getWritableDatabase();
         //初始化list
