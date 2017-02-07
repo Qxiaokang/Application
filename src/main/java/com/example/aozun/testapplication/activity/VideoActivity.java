@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.VideoView;
 
 import com.example.aozun.testapplication.R;
+import com.example.aozun.testapplication.utils.MainApplication;
 
 import java.io.File;
 import java.util.Random;
@@ -45,6 +46,7 @@ public class VideoActivity extends BaseActivity implements DrawHandler.Callback,
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        MainApplication.getInstance().addActivity(this);
         setContentView(R.layout.activity_video);
         initViews();
         getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener(){

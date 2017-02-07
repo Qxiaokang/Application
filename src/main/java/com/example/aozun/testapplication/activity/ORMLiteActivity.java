@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.example.aozun.testapplication.R;
 import com.example.aozun.testapplication.bean.User;
 import com.example.aozun.testapplication.db.UserDao;
+import com.example.aozun.testapplication.utils.MainApplication;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -25,6 +26,7 @@ public class ORMLiteActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        MainApplication.getInstance().addActivity(this);
         setContentView(R.layout.activity_ormlite);
         initViews();
 

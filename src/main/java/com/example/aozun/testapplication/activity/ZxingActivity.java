@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aozun.testapplication.R;
+import com.example.aozun.testapplication.utils.MainApplication;
 
 import zxing.MipcaActivityCapture;
 
@@ -26,6 +27,7 @@ public class ZxingActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        MainApplication.getInstance().addActivity(this);
         setContentView(R.layout.activity_zxing);
         init();
     }

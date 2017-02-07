@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import com.example.aozun.testapplication.R;
 import com.example.aozun.testapplication.adapter.GridAdapter;
 import com.example.aozun.testapplication.utils.LogUtils;
+import com.example.aozun.testapplication.utils.MainApplication;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -63,6 +64,7 @@ public class RxActivtity extends BaseActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        MainApplication.getInstance().addActivity(this);
         setContentView(R.layout.activity_rx_activtity);
         initViews();
     }

@@ -6,6 +6,7 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.example.aozun.testapplication.R;
+import com.example.aozun.testapplication.utils.MainApplication;
 
 /**
  * 垂直滚动的广告
@@ -33,6 +34,7 @@ public class ViewFlipperActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        MainApplication.getInstance().addActivity(this);
         setContentView(R.layout.activity_view_flipper);
         intiViews();
     }

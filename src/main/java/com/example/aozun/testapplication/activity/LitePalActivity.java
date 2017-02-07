@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.example.aozun.testapplication.R;
 import com.example.aozun.testapplication.bean.Books;
 import com.example.aozun.testapplication.utils.LogUtils;
+import com.example.aozun.testapplication.utils.MainApplication;
 
 import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
@@ -40,6 +41,7 @@ public class LitePalActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        MainApplication.getInstance().addActivity(this);
         setContentView(R.layout.activity_lite_pal);
         Connector.getDatabase();//创建数据库，
         initViews();//初始化

@@ -8,6 +8,7 @@ import com.example.aozun.testapplication.R;
 import com.example.aozun.testapplication.adapter.RenRenImgAdapter;
 import com.example.aozun.testapplication.bean.CardConfig;
 import com.example.aozun.testapplication.manager.OverLayCardLayoutManager;
+import com.example.aozun.testapplication.utils.MainApplication;
 import com.example.aozun.testapplication.utils.RenRenCallback;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class RenRenActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        MainApplication.getInstance().addActivity(this);
         setContentView(R.layout.activity_ren_ren);
         initViews();
     }

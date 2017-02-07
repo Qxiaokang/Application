@@ -14,6 +14,7 @@ import com.example.aozun.testapplication.fragment.LineChartFragment;
 import com.example.aozun.testapplication.fragment.PieChartFragment;
 import com.example.aozun.testapplication.fragment.RadarCharFragment;
 import com.example.aozun.testapplication.fragment.ScatterChartFragment;
+import com.example.aozun.testapplication.utils.MainApplication;
 
 /**
  * 图表类
@@ -28,6 +29,7 @@ public class MPChartActivity extends FragmentActivity implements RadioGroup.OnCh
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        MainApplication.getInstance().addActivity(this);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_mpchart);
 

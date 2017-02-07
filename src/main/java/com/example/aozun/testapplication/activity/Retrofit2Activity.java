@@ -10,10 +10,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.aozun.testapplication.MainApplication;
+import com.example.aozun.testapplication.MobileApplication;
 import com.example.aozun.testapplication.R;
 import com.example.aozun.testapplication.bean.BookSearchResponse;
 import com.example.aozun.testapplication.utils.LogUtils;
+import com.example.aozun.testapplication.utils.MainApplication;
 import com.example.aozun.testapplication.utils.RetrofitUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -32,6 +33,7 @@ public class Retrofit2Activity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        MainApplication.getInstance().addActivity(this);
         setContentView(R.layout.activity_retrofit2);
         initViews();
 
@@ -66,7 +68,7 @@ public class Retrofit2Activity extends BaseActivity implements View.OnClickListe
             imageView.setLayoutParams(layoutParams);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
-            ImageLoader.getInstance().displayImage(books.get(i).getImage(),imageView, MainApplication.getCircleOptions());
+            ImageLoader.getInstance().displayImage(books.get(i).getImage(),imageView, MobileApplication.getCircleOptions());
             linearLayout.addView(imageView);
             linearLayout.addView(textView);
             linearLayout.addView(tv);
