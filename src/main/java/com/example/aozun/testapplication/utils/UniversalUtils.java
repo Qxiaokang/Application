@@ -1,5 +1,8 @@
 package com.example.aozun.testapplication.utils;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.security.MessageDigest;
@@ -10,6 +13,7 @@ import java.security.MessageDigest;
  */
 public class UniversalUtils{
     private static UniversalUtils utils;
+    private static  Toast toast;
     private UniversalUtils(){
 
     }
@@ -59,5 +63,14 @@ public class UniversalUtils{
             e.printStackTrace();
             return "";
         }
+    }
+    //
+    public void showToast(Context context,String text){
+        if(toast==null){
+            toast=Toast.makeText(context,text,Toast.LENGTH_LONG);
+        }else {
+            toast.setText(text);
+        }
+        toast.show();
     }
 }

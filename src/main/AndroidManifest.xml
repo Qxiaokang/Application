@@ -6,9 +6,9 @@
     <!-- sd卡权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--振动权限-->
+    <!-- 振动权限 -->
     <uses-permission android:name="android.permission.VIBRATE" />
-    <!--相机权限-->
+    <!-- 相机权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera" />
@@ -90,19 +90,22 @@
         <activity
             android:name=".activity.ViewFlipperActivity"
             android:screenOrientation="landscape" />
-        <!--二维码扫描页面-->
+        <!-- 二维码扫描页面 -->
         <activity
             android:name=".activity.ZxingActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name="zxing.MipcaActivityCapture"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--异常退出页面-->
+        <!-- 异常退出页面 -->
         <activity
             android:name=".activity.CrashActivity"
             android:screenOrientation="landscape" />
+        <activity android:name=".activity.SnackbarActivity"
+            android:screenOrientation="landscape"
+            ></activity>
     </application>
 </manifest>

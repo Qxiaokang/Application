@@ -12,7 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.aozun.testapplication.activity.BaseActivity;
 import com.example.aozun.testapplication.activity.DiscrollActivity;
@@ -23,6 +22,7 @@ import com.example.aozun.testapplication.activity.PwdViewActivity;
 import com.example.aozun.testapplication.activity.RenRenActivity;
 import com.example.aozun.testapplication.activity.Retrofit2Activity;
 import com.example.aozun.testapplication.activity.RxActivtity;
+import com.example.aozun.testapplication.activity.SnackbarActivity;
 import com.example.aozun.testapplication.activity.ViewFlipperActivity;
 import com.example.aozun.testapplication.activity.ZxingActivity;
 import com.example.aozun.testapplication.adapter.RecycleAdapter;
@@ -30,6 +30,7 @@ import com.example.aozun.testapplication.db.TestOpenHelp;
 import com.example.aozun.testapplication.service.LockService;
 import com.example.aozun.testapplication.utils.MainApplication;
 import com.example.aozun.testapplication.utils.Netutil;
+import com.example.aozun.testapplication.utils.UniversalUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,7 +46,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
     private RecyclerView hrecyclerView;
     private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "Litepal",
             "ORMLite", "RxJava", "PwdView", "MPAndroidChart", "Zxing", "Discroll",
-            "RenRenActivity","ViewFlipper"};//按钮为例
+            "RenRenActivity","ViewFlipper","Snackbar"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
     private List<String> datas = new ArrayList<>();
@@ -115,12 +116,14 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
     public void onitemListener(View view, String data){
         Intent intent = null;
         if(data != null){
-            Toast.makeText(this, "点击" + data.toString(), Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "点击" + data.toString(), Toast.LENGTH_LONG).show();
+            UniversalUtils.getInstance().showToast(MainActivity.this,"点击"+data.toString());
             if(data.equals(buts[0])){
                 if(Netutil.connetWork(this)){
                    intent=new Intent(MainActivity.this, Retrofit2Activity.class);
                 }else{
-                    Toast.makeText(this, "未联网,不能进入下一页", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(this, "未联网,不能进入下一页", Toast.LENGTH_LONG).show();
+                    UniversalUtils.getInstance().showToast(MainActivity.this,"未联网，不能进入下一页");
                 }
             }
             if(data.equals(buts[1])){
@@ -159,6 +162,9 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
             if(data.equals(buts[12])){
                 intent=new Intent(MainActivity.this, ViewFlipperActivity.class);
             }
+            if(data.equals(buts[13])){
+                intent=new Intent(MainActivity.this, SnackbarActivity.class);
+            }
             if(intent != null){
                 MainActivity.this.startActivity(intent);
             }
@@ -169,7 +175,8 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
     @Override
     public void onLongItemListener(View v, String data){
         if(data != null){
-            Toast.makeText(this, "長按 " + data, Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "長按 " + data, Toast.LENGTH_LONG).show();
+            UniversalUtils.getInstance().showToast(MainActivity.this,"长按"+data);
         }
     }
 
