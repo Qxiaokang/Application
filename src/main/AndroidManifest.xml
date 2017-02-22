@@ -104,7 +104,7 @@
         <activity
             android:name=".activity.CrashActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.SnackbarActivity"
+        <activity android:name=".activity.ViewsActivity"
             android:screenOrientation="landscape"
             ></activity>
     </application>

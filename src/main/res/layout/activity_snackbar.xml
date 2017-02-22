@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ViewsActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <Button
+            android:id="@+id/snack_del_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="snackbarDel"
+            android:layout_margin="@dimen/bt_margin"
+            android:layout_gravity="center"
+            />
+        <com.example.aozun.testapplication.views.ShopButton
+            android:id="@+id/shopbt_id"
+            android:layout_width="280dp"
+            android:layout_height="@dimen/bt_height"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:layout_margin="@dimen/bt_margin"
+            />
+        <Button
+            android:id="@+id/end_id"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/bt_height"
+            android:layout_margin="@dimen/bt_margin"
+            android:text="添加完成"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/snack_add_id"
+            android:text="cnackbarAdd"
+            android:layout_margin="@dimen/bt_margin"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>
