@@ -147,4 +147,17 @@
         <flag name="fromLeft" value="0x04" />
         <flag name="fromRight" value="0x08" />
     </attr>
+
+
+    <!--RoundImageView属性-->
+    <attr name="borderRadius" format="dimension" />
+    <attr name="imageType">
+        <enum name="circle" value="0" />
+        <enum name="round" value="1" />
+    </attr>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="borderRadius" />
+        <attr name="imageType" />
+    </declare-styleable>
 </resources>

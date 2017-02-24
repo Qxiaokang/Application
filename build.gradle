@@ -13,13 +13,27 @@ android {
         versionName 'V2.10'
 
     }
-
+    signingConfigs{
+        release{
+            storeFile file(store_file)
+            storePassword keyStore_password
+            keyAlias key_alias
+            keyPassword key_password
+            // v2SigningEnabled false不使用新的签名方案
+        }
+    }
     buildTypes {
         release {
             minifyEnabled true //混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
+
+    lintOptions{
+        abortOnError false //lint时候终止错误上报,防止编译的时候莫名的失败
+    }
+
 
    /* freeline{
         hack true
