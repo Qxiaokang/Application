@@ -24,6 +24,7 @@ import com.example.aozun.testapplication.activity.Retrofit2Activity;
 import com.example.aozun.testapplication.activity.RxActivtity;
 import com.example.aozun.testapplication.activity.ViewsActivity;
 import com.example.aozun.testapplication.activity.ViewFlipperActivity;
+import com.example.aozun.testapplication.activity.WelcomeActivity;
 import com.example.aozun.testapplication.activity.ZxingActivity;
 import com.example.aozun.testapplication.adapter.RecycleAdapter;
 import com.example.aozun.testapplication.db.TestOpenHelp;
@@ -46,7 +47,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
     private RecyclerView hrecyclerView;
     private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "Litepal",
             "ORMLite", "RxJava", "PwdView", "MPAndroidChart", "Zxing", "Discroll",
-            "RenRenActivity","ViewFlipper","MyViews"};//按钮为例
+            "RenRenActivity","ViewFlipper","MyViews","WelcomePage"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
     private List<String> datas = new ArrayList<>();
@@ -164,6 +165,9 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
             }
             if(data.equals(buts[13])){
                 intent=new Intent(MainActivity.this, ViewsActivity.class);
+            }
+            if(data.equals(buts[14])){
+                intent=new Intent(MainActivity.this, WelcomeActivity.class);
             }
             if(intent != null){
                 MainActivity.this.startActivity(intent);

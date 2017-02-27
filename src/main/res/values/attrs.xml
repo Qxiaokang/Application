@@ -160,4 +160,12 @@
         <attr name="borderRadius" />
         <attr name="imageType" />
     </declare-styleable>
+
+
+
+    <!--小圆点属性-->
+    <declare-styleable name="IndexView">
+        <attr name="c_count" format="integer"/>
+        <attr name="c_radius" format="dimension"/>
+    </declare-styleable>
 </resources>

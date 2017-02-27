@@ -78,6 +78,7 @@ dependencies {
     //compile project(':leakcanary')//检测内存泄漏
     compile files('libs/zxing.jar')
     compile 'com.android.support:design:24.2.1'
+    compile 'com.android.support:support-v4:24.2.1'
 }
 
 
