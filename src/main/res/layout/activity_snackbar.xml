@@ -6,6 +6,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.ViewsActivity"
     android:orientation="vertical">
+   <HorizontalScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,6 +49,20 @@
             android:layout_gravity="center"
             />
     </LinearLayout>
+   </HorizontalScrollView>
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/img_anim"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/star_vector"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colordblue"
+        />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -54,7 +72,6 @@
             android:layout_width="@dimen/bt_height"
             android:layout_height="@dimen/bt_height"
             android:src="@drawable/aa"
-            android:clickable="true"
             android:visibility="invisible"
             android:layout_alignParentBottom="true"
             app:imageType="circle"
@@ -64,7 +81,6 @@
             android:layout_width="@dimen/bt_height"
             android:layout_height="@dimen/bt_height"
             android:src="@drawable/bb"
-            android:clickable="true"
             android:visibility="invisible"
             android:layout_alignParentBottom="true"
             app:imageType="circle"
@@ -74,7 +90,6 @@
             android:layout_width="@dimen/bt_height"
             android:layout_height="@dimen/bt_height"
             android:src="@drawable/cc"
-            android:clickable="true"
             app:imageType="circle"
             android:visibility="invisible"
             android:layout_alignParentBottom="true"
@@ -85,7 +100,6 @@
             android:layout_width="@dimen/bt_height"
             android:layout_height="@dimen/bt_height"
             android:src="@drawable/dd"
-            android:clickable="true"
             android:visibility="invisible"
             android:layout_alignParentBottom="true"
             app:imageType="circle"
