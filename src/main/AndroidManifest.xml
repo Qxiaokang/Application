@@ -105,7 +105,7 @@
             android:name=".activity.CrashActivity"
             android:screenOrientation="landscape" />
         <activity android:name=".activity.ViewsActivity"
-            android:screenOrientation="landscape"
+
             ></activity>
     </application>
 </manifest>
