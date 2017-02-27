@@ -50,7 +50,7 @@ public class WelcomPageAdapter extends PagerAdapter{
     @Override
     public Object instantiateItem(ViewGroup view, int position){
         view.addView(images.get(position));
-        LogUtils.d("positon:"+position+);
+        LogUtils.d("positon:"+position);
         switch(position){
             case 0:
                 images.get(position).setAnimation(scaleAnimation);
