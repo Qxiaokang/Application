@@ -74,6 +74,7 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
         //默认为第一个
         wpager.addOnPageChangeListener(pageChange);
         pageChange.onPageSelected(0);
+
     }
 
     private void initPage(){
@@ -152,7 +153,7 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view){
-        Intent intent=new Intent(WelcomeActivity.this,ViewsActivity.class);
+        Intent intent=new Intent(WelcomeActivity.this,GifActivity.class);
         startActivity(intent);
         finish();
     }

@@ -22,6 +22,5 @@
     <!-- Description of the button to decrement the DatePicker's year value. [CHAR LIMIT=NONE] -->
     <string name="date_picker_decrement_year_button">Decrement year</string>
     <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
-
     <string name="enter_text">   欢   迎   进   入   </string>
 </resources>

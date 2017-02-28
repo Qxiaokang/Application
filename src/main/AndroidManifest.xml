@@ -104,13 +104,16 @@
         <activity
             android:name=".activity.CrashActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.ViewsActivity"
+        <activity
+            android:name=".activity.ViewsActivity"
+            android:screenOrientation="portrait" />
+        <!-- 引导页 -->
+        <activity
+            android:name=".activity.WelcomeActivity"
+            android:screenOrientation="portrait" />
+        <!--Gif图片页面-->
+        <activity android:name=".activity.GifActivity"
             android:screenOrientation="portrait"
             ></activity>
-
-        <!--引导页-->
-        <activity android:name=".activity.WelcomeActivity"
-            android:screenOrientation="portrait"
-            />
     </application>
 </manifest>
