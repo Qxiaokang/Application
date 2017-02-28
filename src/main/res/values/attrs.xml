@@ -166,6 +166,6 @@
     <!--小圆点属性-->
     <declare-styleable name="IndexView">
         <attr name="c_count" format="integer"/>
-        <attr name="c_radius" format="dimension"/>
+        <attr name="c_radius" format="float"/>
     </declare-styleable>
 </resources>

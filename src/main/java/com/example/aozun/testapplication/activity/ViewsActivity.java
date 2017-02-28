@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.aozun.testapplication.R;
+import com.example.aozun.testapplication.utils.MainApplication;
 import com.example.aozun.testapplication.utils.UniversalUtils;
 import com.example.aozun.testapplication.views.OpenMenuTextView;
 import com.example.aozun.testapplication.views.RoundImageView;
@@ -33,6 +34,7 @@ public class ViewsActivity extends BaseActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_snackbar);
+        MainApplication.getInstance().addActivity(this);
         initViews();
 
     }

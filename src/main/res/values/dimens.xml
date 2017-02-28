@@ -13,4 +13,5 @@
     <dimen name="bt_big_margin">50dp</dimen>
     <dimen name="bt_height">60dp</dimen>
     <dimen name="tv_sixe15">15dp</dimen>
+    <dimen name="bt_height30">30dp</dimen>
 </resources>
