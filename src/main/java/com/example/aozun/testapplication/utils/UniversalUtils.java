@@ -6,6 +6,8 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileInputStream;
 import java.security.MessageDigest;
+import java.util.Locale;
+import java.util.UUID;
 
 /**
  * Created by HHD-H-I-0369 on 2017/1/10.
@@ -72,5 +74,29 @@ public class UniversalUtils{
             toast.setText(text);
         }
         toast.show();
+    }
+
+    /**  返回数据表主键所需的32位主键值   */
+    public String getUUID() {
+        return UUID.randomUUID().toString().replaceAll("-", "").toUpperCase(Locale.US);
+    }
+    /** 删除该目录下的所有文件  */
+    public static boolean delFile(File f) {
+        boolean flag=false;
+        if (!f.exists()) {
+            return true;
+        }
+        if (f.isDirectory()) {
+            File[] fs = f.listFiles();
+            for (int i = 0; i < fs.length; i++) {
+                flag = delFile(fs[i]);
+                if(!flag){
+                    break;
+                }
+            }
+        } else {
+            flag=f.delete();
+        }
+        return flag;
     }
 }
