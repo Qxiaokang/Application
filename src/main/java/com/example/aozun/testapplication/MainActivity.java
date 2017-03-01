@@ -69,7 +69,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
         for(int i = 0; i < buts.length; i++){
             datas.add(buts[i]);
         }
-        LogUtils.e("ScreenW:"+screenW+"    ScreenH:"+screenH);
+        LogUtils.e("密度："+s_density+"   Dpi:"+ s_dendityDpi+ "   ScreenW:"+screenW+"----"+screenW/s_density+"dp    ScreenH:"+screenH+"----"+screenH/s_density+"dp");
         initViews();//初始化
 
     }

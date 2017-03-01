@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatImageView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.aozun.testapplication.R;
@@ -17,6 +18,7 @@ import com.example.aozun.testapplication.views.GifView;
 public class GifActivity extends BaseActivity implements View.OnClickListener{
     private GifView gifView;
     private AppCompatImageView compatImageView;
+    private Button start_bt;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -26,6 +28,7 @@ public class GifActivity extends BaseActivity implements View.OnClickListener{
     //初始化gif图片，控件
     private void initViews(){
         gifView= (GifView) findViewById(R.id.gif_img);
+        start_bt= (Button) findViewById(R.id.start_bt);
         compatImageView= (AppCompatImageView) findViewById(R.id.bai_imag_id);
         compatImageView.setVisibility(View.INVISIBLE);
         gifView.setMovieResource(R.raw.star111);
@@ -35,6 +38,7 @@ public class GifActivity extends BaseActivity implements View.OnClickListener{
     public void test(View view){
         compatImageView.setVisibility(View.VISIBLE);
         onClick(compatImageView);
+        start_bt.setEnabled(false);
     }
 
 
