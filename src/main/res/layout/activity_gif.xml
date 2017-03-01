@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.aozun.testapplication.activity.GifActivity"
+    android:background="@color/colorBlack1">
+    <com.example.aozun.testapplication.views.GifView
+        android:id="@+id/gif_img"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true"
+        />
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/bai_imag_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        app:srcCompat="@drawable/start_baihe1_vector"
+        android:clickable="false"
+        android:scaleType="fitCenter"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:text="test"
+        android:onClick="test"
+        android:textColor="@color/bt_textvcolor1"
+        android:background="@drawable/bt_bg_selct1"
+        />
+
+</RelativeLayout>
