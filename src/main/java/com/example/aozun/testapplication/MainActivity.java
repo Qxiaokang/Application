@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.aozun.testapplication.activity.BaseActivity;
+import com.example.aozun.testapplication.activity.CameraActivity;
 import com.example.aozun.testapplication.activity.DiscrollActivity;
 import com.example.aozun.testapplication.activity.LitePalActivity;
 import com.example.aozun.testapplication.activity.MPChartActivity;
@@ -29,6 +30,7 @@ import com.example.aozun.testapplication.activity.ZxingActivity;
 import com.example.aozun.testapplication.adapter.RecycleAdapter;
 import com.example.aozun.testapplication.db.TestOpenHelp;
 import com.example.aozun.testapplication.service.LockService;
+import com.example.aozun.testapplication.utils.LogUtils;
 import com.example.aozun.testapplication.utils.MainApplication;
 import com.example.aozun.testapplication.utils.Netutil;
 import com.example.aozun.testapplication.utils.UniversalUtils;
@@ -47,7 +49,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
     private RecyclerView hrecyclerView;
     private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "Litepal",
             "ORMLite", "RxJava", "PwdView", "MPAndroidChart", "Zxing", "Discroll",
-            "RenRenActivity","ViewFlipper","MyViews","WelcomePage"};//按钮为例
+            "RenRenActivity","ViewFlipper","MyViews","WelcomePage","takePhoto"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
     private List<String> datas = new ArrayList<>();
@@ -67,6 +69,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
         for(int i = 0; i < buts.length; i++){
             datas.add(buts[i]);
         }
+        LogUtils.e("ScreenW:"+screenW+"    ScreenH:"+screenH);
         initViews();//初始化
 
     }
@@ -168,6 +171,9 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
             }
             if(data.equals(buts[14])){
                 intent=new Intent(MainActivity.this, WelcomeActivity.class);
+            }
+            if(data.equals(buts[15])){
+                intent=new Intent(MainActivity.this, CameraActivity.class);
             }
             if(intent != null){
                 MainActivity.this.startActivity(intent);

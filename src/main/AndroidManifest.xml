@@ -115,5 +115,10 @@
         <activity android:name=".activity.GifActivity"
             android:screenOrientation="portrait"
             ></activity>
+        <!--自定义相机页面-->
+        <activity android:name=".activity.CameraActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            />
     </application>
 </manifest>

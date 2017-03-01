@@ -13,6 +13,7 @@ import com.example.aozun.testapplication.R;
 
 /**
  * Created by HHD-H-I-0369 on 2017/2/28.
+ * 自定义显示gif图片
  */
 public class GifView extends View {
 
