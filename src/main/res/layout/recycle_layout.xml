@@ -14,7 +14,7 @@
         android:textStyle="bold"
         android:textSize="@dimen/content_size"
         android:textColor="@color/bt_textvcolor1"
-        android:background="@drawable/btn_style2"
+        android:background="@drawable/bt_bg_selct1"
         android:singleLine="true"
         android:ellipsize="end"
 
