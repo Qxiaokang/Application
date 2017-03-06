@@ -2,6 +2,7 @@ package com.example.aozun.testapplication.activity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -20,16 +21,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.aozun.testapplication.R;
+import com.example.aozun.testapplication.thread.SaveThread;
 import com.example.aozun.testapplication.utils.InitContent;
 import com.example.aozun.testapplication.utils.LogUtils;
 import com.example.aozun.testapplication.utils.MainApplication;
 import com.example.aozun.testapplication.utils.UniversalUtils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by HHD-H-I-0369 on 2017/2/28.
@@ -48,14 +50,14 @@ public class CameraActivity extends BaseActivity implements View.OnClickListener
     private byte[] photobytes;
     private Bitmap bitmap;
     private View lineview;//分隔线
-
+    private ExecutorService executorService= Executors.newFixedThreadPool(3);
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//屏幕常亮
         //设置手机屏幕朝向，一共有7种
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //SCREEN_ORIENTATION_BEHIND： 继承Activity堆栈中当前Activity下面的那个Activity的方向
         //SCREEN_ORIENTATION_LANDSCAPE： 横屏(风景照) ，显示时宽度大于高度
         //SCREEN_ORIENTATION_PORTRAIT： 竖屏 (肖像照) ， 显示时高度大于宽度
@@ -63,6 +65,7 @@ public class CameraActivity extends BaseActivity implements View.OnClickListener
         //SCREEN_ORIENTATION_NOSENSOR： 忽略物理感应器——即显示方向与物理感应器无关，不管用户如何旋转设备显示方向都不会随着改变("unspecified"设置除外)
         //SCREEN_ORIENTATION_UNSPECIFIED： 未指定，此为默认值，由Android系统自己选择适当的方向，选择策略视具体设备的配置情况而定，因此不同的设备会有不同的方向选择
         //SCREEN_ORIENTATION_USER： 用户当前的首选方向
+
         setContentView(R.layout.activity_camera);
         MainApplication.getInstance().addActivity(this);
         initViews();
@@ -85,6 +88,7 @@ public class CameraActivity extends BaseActivity implements View.OnClickListener
         surfaceHolder = surfaceView.getHolder();//获得句柄
         surfaceHolder.addCallback(this);//添加回调
         surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);//不维护自己的缓冲区，等待屏幕渲染引擎将内容摄推送到用户面前
+
     }
 
     @Override
@@ -92,7 +96,9 @@ public class CameraActivity extends BaseActivity implements View.OnClickListener
         switch(view.getId()){
             //拍照
             case R.id.take:
-                camera.takePicture(null, null, jpegpic);
+                if(camera!=null){
+                    camera.takePicture(null, null, jpegpic);
+                }
                 takephoto.setEnabled(false);
                 cancleC.setText(yes);
                 changeC.setText(no);
@@ -106,8 +112,8 @@ public class CameraActivity extends BaseActivity implements View.OnClickListener
                 //确认照片则保存
                 if(cancleC.getText().toString().equals(yes)){
                     if(path != null && photobytes != null && photobytes.length != 0){
-                        boolean b = savePicTosd(path, photobytes);
-                        LogUtils.d("savepic:" + b);
+                       //开启线程
+                        executorService.execute(new SaveThread(path,photobytes));
                     }
                     startTake();
                     takephoto.setEnabled(true);
@@ -153,7 +159,7 @@ public class CameraActivity extends BaseActivity implements View.OnClickListener
                                     break;
                                 }
                             }
-                            LogUtils.i("camerainfo.facing:"+cameraInfo.facing);
+                            LogUtils.i("camerainfo.facing:" + cameraInfo.facing);
                         }
                     }else{
                         UniversalUtils.getInstance().showToast(this, "相机启动失败");
@@ -174,6 +180,16 @@ public class CameraActivity extends BaseActivity implements View.OnClickListener
         camera = null;//取消摄相头
         camera = Camera.open(i);//打开当前选中的摄相头
         try{
+            Camera.Parameters parameters = camera.getParameters();
+            if(getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE){
+                parameters.set("orientation", "portrait");
+                camera.setDisplayOrientation(90);
+                //parameters.setRotation(90);
+            }else{
+                parameters.set("orientation", "landscape");
+                //parameters.setRotation(0);
+                camera.setDisplayOrientation(0);
+            }
             camera.setPreviewDisplay(surfaceHolder);//显示取景
             camera.startPreview();//开始预览
         }catch(IOException e){
@@ -213,26 +229,33 @@ public class CameraActivity extends BaseActivity implements View.OnClickListener
             camera = Camera.open(cameraPosition);
         }
         try{
-
             Camera.Parameters parameters = camera.getParameters();
             List<Camera.Size> supportedPreviewSizes = parameters.getSupportedPreviewSizes();
             for(int i = 0; i < supportedPreviewSizes.size(); i++){
                 size = supportedPreviewSizes.get(i);
-                if(i == supportedPreviewSizes.size()-1){
+                if(i == supportedPreviewSizes.size() - 1){
                     width = size.width;
                     height = size.height;
                 }
-                LogUtils.i("分辨率："+size.width+","+size.height);
+                LogUtils.i("分辨率：" + size.width + "," + size.height);
             }
             List<Camera.Size> supportedPictureSizes = parameters.getSupportedPictureSizes();
             for(int i = 0; i < supportedPictureSizes.size(); i++){
-                LogUtils.i("picsize:"+supportedPictureSizes.get(i).width+","+supportedPictureSizes.get(i).height);
+                LogUtils.i("picsize:" + supportedPictureSizes.get(i).width + "," + supportedPictureSizes.get(i).height);
             }
-            parameters.setPreviewSize(1280,720);//设置像素
+            parameters.setPreviewSize(1280, 720);//设置像素
             parameters.setPictureSize(1280, 720);//设置图片尺寸
             parameters.setPreviewFormat(PixelFormat.YCbCr_420_SP);
             parameters.setPictureFormat(PixelFormat.JPEG);
-            parameters.setRotation(270);
+            if(getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE){
+                parameters.set("orientation", "portrait");
+                camera.setDisplayOrientation(90);
+                //parameters.setRotation(90);
+            }else{
+                parameters.set("orientation", "landscape");
+                //parameters.setRotation(0);
+                camera.setDisplayOrientation(0);
+            }
             camera.setParameters(parameters);
             camera.setPreviewDisplay(surfaceHolder);
             camera.startPreview();
@@ -262,44 +285,62 @@ public class CameraActivity extends BaseActivity implements View.OnClickListener
             surfaceView = null;
             surfaceHolder = null;
         }
+        if(executorService!=null){
+            executorService.shutdown();
+            executorService=null;
+        }
+        if(bitmap!=null){
+            bitmap.recycle();
+            bitmap=null;
+        }
         super.onDestroy();
     }
-
-
 
     Camera.PictureCallback jpegpic = new Camera.PictureCallback(){
         @Override
         public void onPictureTaken(byte[] bytes, Camera camera){
+            LogUtils.e("picbytes.length:"+bytes.length);
             ImageView imageView = new ImageView(CameraActivity.this);
-            float f= (float) (screenW*1.00/screenH);
-            float f1= (float) (screenH*1.00/screenW);
+            float f = (float) (screenW * 1.00 / screenH);
+            float f1 = (float) (screenH * 1.00 / screenW);
+            int orientaition=photoL.getOrientation();
             LinearLayout.LayoutParams params = null;
-            LogUtils.e("getheigt:" + photoL.getHeight()+"  f:"+f+"  f1:"+f1);
+            LogUtils.d("jpegpic--");
+            LogUtils.d("getheigt:" + photoL.getHeight() + "  f:" + f + "  f1:" + f1);
             //横竖屏的配置
-            if(photoL.getOrientation() == LinearLayout.HORIZONTAL){
-                params = new LinearLayout.LayoutParams((int) (photoL.getHeight() *(f>f1?f:f1)), ViewGroup.LayoutParams.MATCH_PARENT);
+            if(orientaition == LinearLayout.HORIZONTAL){
+                params = new LinearLayout.LayoutParams((int) (photoL.getHeight() * (f > f1 ? f : f1)), ViewGroup.LayoutParams.MATCH_PARENT);
                 params.setMargins(15, 5, 15, 0);
             }else{
-                params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (photoL.getWidth() * (f>f1?f1:f)));
+                params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (photoL.getWidth() * (f > f1 ? f1 : f)));
                 params.setMargins(5, 15, 0, 15);
             }
             imageView.setLayoutParams(params);
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            LogUtils.i("压缩前bitmap:"+bitmap.getByteCount());
+            //压缩图片
+            bitmap=changeBitmap(bitmap,orientaition);
+            LogUtils.i("压缩后bitmap:"+bitmap.getByteCount());
             imageView.setImageBitmap(bitmap);
             photoL.addView(imageView);
             lineview.setVisibility(View.VISIBLE);
             photobytes = bytes;
+
+
         }
     };
 
     //开启预览
     private void startTake(){
         try{
+            if(camera != null){
+                camera.stopPreview();
+            }
             if(camera == null){
                 camera = Camera.open(cameraPosition);
             }
-            if(surfaceHolder != null){
+            if(surfaceHolder != null && camera != null){
                 camera.setPreviewDisplay(surfaceHolder);//通过surfaceview显示取景画
                 camera.startPreview();//开始预览
             }
@@ -308,31 +349,22 @@ public class CameraActivity extends BaseActivity implements View.OnClickListener
         }
     }
 
-    //保存图片到sd卡
-    private boolean savePicTosd(String ph, byte[] bytes){
-        LogUtils.e("ph:" + ph);
-        try{
-            File file = new File(ph + File.separator + UniversalUtils.getInstance().getUUID() + ".jpg");
-            FileOutputStream outputStream = new FileOutputStream(file);
-            outputStream.write(bytes, 0, bytes.length);
-            outputStream.close();
-        }catch(FileNotFoundException e){
-            e.printStackTrace();
-            return false;
-        }catch(IOException e){
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
+
+
 
     //缩放
-    private Bitmap changeBitmap(Bitmap bp){
-        float f2=(photoL.getHeight()-5)*1.0f/screenW;
-        Matrix matrix=new Matrix();
-        matrix.setScale(f2,f2);
-        bitmap=Bitmap.createBitmap(bp,0,0,bitmap.getWidth(),bp.getHeight(),matrix,true);
+    private Bitmap changeBitmap(Bitmap bp,int orientation){
+        float m=0;
+        if(orientation==LinearLayout.VERTICAL){
+            m=photoL.getWidth()*1.0f/(screenW>screenH?screenW:screenH);
+        }else {
+            m=photoL.getHeight()*1.0f/(screenW>screenH?screenH:screenW);
+        }
 
+        LogUtils.d("压缩比例m："+m);
+        Matrix matrix = new Matrix();
+        matrix.setScale(m, m);
+        bitmap = Bitmap.createBitmap(bp, 0, 0, bp.getWidth(), bp.getHeight(), matrix, true);
         return bitmap;
     }
 }
