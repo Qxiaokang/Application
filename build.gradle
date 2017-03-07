@@ -75,10 +75,14 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.1'
     compile 'com.github.bumptech.glide:glide:3.5.2'
     //compile 'com.antfortune.freeline:runtime:0.8.4'
-    //compile project(':leakcanary')//检测内存泄漏
+
     compile files('libs/zxing.jar')
     compile 'com.android.support:design:24.2.1'
     compile 'com.android.support:support-v4:24.2.1'
+    //LeakCanary //compile project(':leakcanary')//检测内存泄漏
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 }
 
 
