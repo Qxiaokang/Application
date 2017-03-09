@@ -11,7 +11,8 @@ import java.io.File;
 public class InitContent{
     private static InitContent initContent;
     private String photoPath;
-
+    private int cacheSize=10*1024*1024;
+    private File fileDir;
     private InitContent(){
     }
 
@@ -44,5 +45,16 @@ public class InitContent{
             LogUtils.e("sd卡挂载失败");
         }
         return photoPath;
+    }
+
+    public int getCacheSize(){
+        return cacheSize;
+    }
+    public File getCacheFileDir(){
+        fileDir=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+File.separator+"cache");
+        if(!fileDir.exists()){
+           fileDir.mkdirs();
+        }
+        return fileDir;
     }
 }

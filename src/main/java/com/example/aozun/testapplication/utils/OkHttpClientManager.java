@@ -70,7 +70,7 @@ public class OkHttpClientManager{
      * @param url
      * @return Response
      */
-    private Response _getAsyn(String url) throws IOException{
+    public Response _getAsyn(String url) throws IOException{
         final Request request = new Request.Builder().url(url).build();
        Call call = mOkHttpClient.newCall(request);
         Response execute = call.execute();
@@ -83,7 +83,7 @@ public class OkHttpClientManager{
      * @param url
      * @return 字符串
      */
-    private String _getAsString(String url) throws IOException{
+    public String _getAsString(String url) throws IOException{
         Response execute = _getAsyn(url);
         return execute.body().string();
     }
@@ -94,7 +94,7 @@ public class OkHttpClientManager{
      * @param url
      * @param callback
      */
-    private void _getAsyn(String url, final ResultCallback callback){
+    public void _getAsyn(String url, final ResultCallback callback){
         final Request request = new Request.Builder().url(url).build();
         deliveryResult(callback, request);
     }
@@ -106,7 +106,7 @@ public class OkHttpClientManager{
      * @param params post的参数
      * @return
      */
-    private Response _post(String url, Param... params) throws IOException{
+    public Response _post(String url, Param... params) throws IOException{
         Request request = buildPostRequest(url, params);
         Response response = mOkHttpClient.newCall(request).execute();
         return response;
@@ -119,7 +119,7 @@ public class OkHttpClientManager{
      * @param params post的参数
      * @return 字符串
      */
-    private String _postAsString(String url, Param... params) throws IOException{
+    public String _postAsString(String url, Param... params) throws IOException{
         Response response = _post(url, params);
         return response.body().string();
     }
@@ -131,7 +131,7 @@ public class OkHttpClientManager{
      * @param callback
      * @param params
      */
-    private void _postAsyn(String url, final ResultCallback callback, Param... params){
+    public void _postAsyn(String url, final ResultCallback callback, Param... params){
         Request request = buildPostRequest(url, params);
         deliveryResult(callback, request);
     }
@@ -143,7 +143,7 @@ public class OkHttpClientManager{
      * @param callback
      * @param params
      */
-    private void _postAsyn(String url, final ResultCallback callback, Map<String, String> params){
+    public void _postAsyn(String url, final ResultCallback callback, Map<String, String> params){
         Param[] paramsArr = map2Params(params);
         Request request = buildPostRequest(url, paramsArr);
         deliveryResult(callback, request);
@@ -155,17 +155,17 @@ public class OkHttpClientManager{
      * @param params
      * @return
      */
-    private Response _post(String url, File[] files, String[] fileKeys, Param... params) throws IOException{
+    public Response _post(String url, File[] files, String[] fileKeys, Param... params) throws IOException{
         Request request = buildMultipartFormRequest(url, files, fileKeys, params);
         return mOkHttpClient.newCall(request).execute();
     }
 
-    private Response _post(String url, File file, String fileKey) throws IOException{
+    public Response _post(String url, File file, String fileKey) throws IOException{
         Request request = buildMultipartFormRequest(url, new File[]{file}, new String[]{fileKey}, null);
         return mOkHttpClient.newCall(request).execute();
     }
 
-    private Response _post(String url, File file, String fileKey, Param... params) throws IOException{
+    public Response _post(String url, File file, String fileKey, Param... params) throws IOException{
         Request request = buildMultipartFormRequest(url, new File[]{file}, new String[]{fileKey}, params);
         return mOkHttpClient.newCall(request).execute();
     }
@@ -179,7 +179,7 @@ public class OkHttpClientManager{
      * @param fileKeys
      * @throws IOException
      */
-    private void _postAsyn(String url, ResultCallback callback, File[] files, String[] fileKeys, Param... params) throws IOException{
+    public void _postAsyn(String url, ResultCallback callback, File[] files, String[] fileKeys, Param... params) throws IOException{
         Request request = buildMultipartFormRequest(url, files, fileKeys, params);
         deliveryResult(callback, request);
     }
@@ -193,7 +193,7 @@ public class OkHttpClientManager{
      * @param fileKey
      * @throws IOException
      */
-    private void _postAsyn(String url, ResultCallback callback, File file, String fileKey) throws IOException{
+    public void _postAsyn(String url, ResultCallback callback, File file, String fileKey) throws IOException{
         Request request = buildMultipartFormRequest(url, new File[]{file}, new String[]{fileKey}, null);
         deliveryResult(callback, request);
     }
@@ -208,7 +208,7 @@ public class OkHttpClientManager{
      * @param params
      * @throws IOException
      */
-    private void _postAsyn(String url, ResultCallback callback, File file, String fileKey, Param... params) throws IOException{
+    public void _postAsyn(String url, ResultCallback callback, File file, String fileKey, Param... params) throws IOException{
         Request request = buildMultipartFormRequest(url, new File[]{file}, new String[]{fileKey}, params);
         deliveryResult(callback, request);
     }
@@ -220,7 +220,7 @@ public class OkHttpClientManager{
      * @param destFileDir 本地文件存储的文件夹
      * @param callback
      */
-    private void _downloadAsyn(final String url, final String destFileDir, final ResultCallback callback){
+    public void _downloadAsyn(final String url, final String destFileDir, final ResultCallback callback){
         final Request request = new Request.Builder().url(url).build();
         final Call call = mOkHttpClient.newCall(request);
         call.enqueue(new Callback(){
