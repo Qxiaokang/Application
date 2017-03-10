@@ -29,6 +29,7 @@ import java.util.TimerTask;
  * okhttp加载图片
  * picasso加载图片
  * glide加载图片
+ * okhttp3请求
  */
 public class OkHttpActivity extends BaseActivity implements View.OnClickListener{
     private Button otbut,dmStart;
@@ -37,7 +38,9 @@ public class OkHttpActivity extends BaseActivity implements View.OnClickListener
     private static final String picurl1="http://nuuneoi.com/uploads/source/playstore/cover.jpg";
     private static final String picurl2="https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=gif%E5%9B%BE&step_word=&hs=2&pn=2&spn=0&di=5356811902&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&istype=0&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=undefined&cs=407946030%2C1201660130&os=3869529541%2C680616572&simid=3329441505%2C133996416&adpicid=0&lpn=0&ln=1982&fr=&fmq=1484646413391_R&fm=&ic=undefined&s=undefined&se=&sme=&tab=0&width=&height=&face=undefined&ist=&jit=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fimg4q.duitang.com%2Fuploads%2Fitem%2F201505%2F19%2F20150519210608_j4BLQ.thumb.700_0.gif&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3B17tpwg2_z%26e3Bv54AzdH3Frj5rsjAzdH3F4ks52AzdH3Fnm09bm0b8AzdH3F1jpwtsAzdH3F&gsm=0&rpstart=0&rpnum=0";
     //手机信息查询接口
-    private static final String PHONE_NUMCONTENT="http://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=";
+    private static final String PHONE_NUMCONTENT="http://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=15071651718";
+    private static final String TIANQI ="http://php.weather.sina.com.cn/iframe/index/w_cl.php?code=js&day=0&city=&dfc=1&charset=utf-8";
+    private static final String LOCATION_URL="http://ditu.amap.com/service/regeo?longitude=121.04925573429551&latitude=31.315590522490712";
     private  ProgressDialog progressDialog;
     //系统自带的downloadmanager
     private DownloadManager downloadManager;
@@ -55,6 +58,8 @@ public class OkHttpActivity extends BaseActivity implements View.OnClickListener
 
 
     }
+
+    //下载处理
      Handler downloadHandler=new Handler(){
         @Override
         public void handleMessage(Message msg){
@@ -65,26 +70,24 @@ public class OkHttpActivity extends BaseActivity implements View.OnClickListener
                         progressDialog.setProgress(msg.arg1);
                         if(msg.arg1==100){
                             progressDialog.dismiss();
-                            UniversalUtils.getInstance().showToast(OkHttpActivity.this,"下载完成");
+                            UniversalUtils.getInstance().showToast(OkHttpActivity.this,"downloadManager下载完成");
                         }
                     }
 
                     break;
                 default:
-                    if(progressDialog!=null&&progressDialog.isShowing()){
-                        progressDialog.dismiss();
-                    }
+                    cancleDialog();
                     break;
 
             }
 
         }
     };
-
+    //用DownloadManager进行下载
     private void startDownload(){
         downloadManager= (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+
         request=new DownloadManager.Request(Uri.parse(picurl1));
-        final long loadid=downloadManager.enqueue(request);
         //data下面
         //request.setDestinationInExternalFilesDir(this, Environment.DIRECTORY_DOWNLOADS,"img3.jpg");
         //sd卡
@@ -103,6 +106,7 @@ public class OkHttpActivity extends BaseActivity implements View.OnClickListener
         request.setTitle("Title");
         request.setDescription("描述");
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);//是否显示
+        final long loadid=downloadManager.enqueue(request);
         final DownloadManager.Query query=new DownloadManager.Query();
         timerTask=new TimerTask(){
             @Override
@@ -112,6 +116,7 @@ public class OkHttpActivity extends BaseActivity implements View.OnClickListener
                     if(cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS))==DownloadManager.STATUS_SUCCESSFUL){
                         LogUtils.d("downloadmanager--100");
                         timerTask.cancel();
+                        timerTask=null;
                     }
                     String title=cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_TITLE));
                     String address =cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
@@ -128,10 +133,10 @@ public class OkHttpActivity extends BaseActivity implements View.OnClickListener
                 }
             }
         };
-        timer.schedule(timerTask,0,100);
+        timer.schedule(timerTask,0,200);
 
     }
-
+    //
     private void initViews(){
         otbut= (Button) findViewById(R.id.okhttpbut);
         imageView= (ImageView) findViewById(R.id.imageid);
@@ -147,21 +152,25 @@ public class OkHttpActivity extends BaseActivity implements View.OnClickListener
     public void onClick(View view){
         switch(view.getId()){
             case R.id.okhttpbut:
-                showDialog();
                 //okhttp加载图片
                 OkHttpClientManager.getInstance()._displayImage(imageView,url,110);
                 //picasso加载图片
                 Picasso.with(OkHttpActivity.this)
                         .load(picurl1)
                         .config(Bitmap.Config.ARGB_8888)
+                        .placeholder(R.drawable.normal)
+                        .error(R.drawable.normal)
                         .into(picasso_iv);
                 //glide加载图片
                 Glide.with(OkHttpActivity.this)
                         .load(picurl2)
                         .asGif()
+                        .placeholder(R.drawable.normal)//点位
+                        .error(R.drawable.normal)//错误图片
                         .into(glide_iv);
-                cancleDialog();
-                OkHttp3Manager.getInstance().getAsynString(PHONE_NUMCONTENT + "15211112222", new OkHttp3Manager.Ok3CallBack(){
+
+                //okhttp3网络请求
+                OkHttp3Manager.getInstance().getAsynString(LOCATION_URL, new OkHttp3Manager.Ok3CallBack(){
                     @Override
                     public void error(String ee){
                         LogUtils.e(""+ee);
@@ -174,7 +183,6 @@ public class OkHttpActivity extends BaseActivity implements View.OnClickListener
                     }
                 });
 
-                break;
             case R.id.downloadmanager_bt:
                 showDialog();
                 startDownload();
@@ -201,4 +209,16 @@ public class OkHttpActivity extends BaseActivity implements View.OnClickListener
         }
     }
 
+    @Override
+    protected void onDestroy(){
+        if(timerTask!=null){
+            timerTask.cancel();
+            timerTask=null;
+        }
+        if(timer!=null){
+            timer.cancel();
+            timer=null;
+        }
+        super.onDestroy();
+    }
 }

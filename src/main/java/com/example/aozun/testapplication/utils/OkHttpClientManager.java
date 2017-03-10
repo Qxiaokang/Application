@@ -289,7 +289,7 @@ public class OkHttpClientManager{
                 InputStream is = null;
                 try{
                     is = response.body().byteStream();
-                   /* ImageUtils.ImageSize actualImageSize = ImageUtils.getImageSize(is);
+                    /*ImageUtils.ImageSize actualImageSize = ImageUtils.getImageSize(is);
                     ImageUtils.ImageSize imageViewSize = ImageUtils.getImageViewSize(view);
                     int inSampleSize = ImageUtils.calculateInSampleSize(actualImageSize, imageViewSize);*/
                     try{
