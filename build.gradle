@@ -33,6 +33,7 @@ android {
 
     lintOptions{
         abortOnError false //lint时候终止错误上报,防止编译的时候莫名的失败
+        checkReleaseBuilds false
     }
 
 
