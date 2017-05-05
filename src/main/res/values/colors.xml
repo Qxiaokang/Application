@@ -14,9 +14,12 @@
     <color name="colorgreen">#32CA42</color>
     <color name="colorRed">#FF0000</color>
 
-
     <color name="result_view">#b0000000</color>
     <color name="viewfinder_mask">#60000000</color>
     <color name="possible_result_points">#c0ffff00</color>
+
+    <color name="testColor">#0E85FD</color>
+    <color name="testColor1">#009900</color>
+
 
 </resources>

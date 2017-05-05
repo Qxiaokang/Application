@@ -82,8 +82,8 @@ public class ViewsActivity extends BaseActivity implements View.OnClickListener{
         });
         imageViewa.setOnClickListener(this);
 
-        appCompatImageView= (AppCompatImageView) findViewById(R.id.img_anim);
-        appCompatImageView.setOnClickListener(this);
+        //appCompatImageView= (AppCompatImageView) findViewById(R.id.img_anim);
+        //appCompatImageView.setOnClickListener(this);
 
 
     }
@@ -108,18 +108,18 @@ public class ViewsActivity extends BaseActivity implements View.OnClickListener{
                 UniversalUtils.getInstance().showToast(ViewsActivity.this, "点击签到");
                 break;
 
-            case R.id.img_anim:
+           /* case R.id.img_anim:
                 UniversalUtils.getInstance().showToast(ViewsActivity.this,"animImage");
                 //VectorDrawable轨迹动画
-                /*ImageView imageView= (ImageView) view;
+                *//*ImageView imageView= (ImageView) view;
                 Drawable drawable=imageView.getDrawable();
                 LogUtils.d("onclick+");
                 if(drawable instanceof Animatable){
                     LogUtils.d("start");
                     ((Animatable) drawable).start();
-                }*/
+                }*//*
                 anim(view);
-                break;
+                break;*/
             default:
                 break;
         }

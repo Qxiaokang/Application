@@ -178,4 +178,9 @@
         <attr name="gifViewStyle" format="reference" />
     </declare-styleable>
     <style name="Widget_GifView"></style>
+
+
+    <declare-styleable name="PowerfulEditText">
+        <attr name="et_type" format="integer"/>
+    </declare-styleable>
 </resources>

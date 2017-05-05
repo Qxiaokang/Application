@@ -109,7 +109,7 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".activity.ViewsActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="landscape" />
         <!-- 引导页 -->
         <activity
             android:name=".activity.WelcomeActivity"
