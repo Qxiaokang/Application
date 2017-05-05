@@ -50,19 +50,51 @@
             />
     </LinearLayout>
    </HorizontalScrollView>
-    <android.support.v7.widget.AppCompatImageView
+   <!-- <android.support.v7.widget.AppCompatImageView
         android:id="@+id/img_anim"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:layout_gravity="center"
         app:srcCompat="@drawable/star_vector"
-        />
+        />-->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colordblue"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bt_margin"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DELETE"
+            android:layout_gravity="left|center"
+            />
+        <com.example.aozun.testapplication.views.PowerfulEditText
+            android:layout_width="@dimen/bt_big_width"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_pof"
+            app:et_type="1"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PWD"
+            android:layout_gravity="left|center"
+            />
+        <com.example.aozun.testapplication.views.PowerfulEditText
+            android:layout_width="@dimen/bt_big_width"
+            android:layout_height="wrap_content"
+            app:et_type="2"
+            android:inputType="textPassword"
+            />
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

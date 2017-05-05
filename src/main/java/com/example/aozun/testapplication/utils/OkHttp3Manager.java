@@ -160,8 +160,6 @@ public class OkHttp3Manager{
     }
 
 
-
-
     public interface Ok3CallBack{
         //失败
         void error(String ee);
