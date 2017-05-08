@@ -84,6 +84,7 @@ dependencies {
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    compile project(path: ':lottie')
 }
 
 
