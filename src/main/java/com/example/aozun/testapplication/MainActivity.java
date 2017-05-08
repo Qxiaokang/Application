@@ -17,14 +17,15 @@ import com.example.aozun.testapplication.activity.BaseActivity;
 import com.example.aozun.testapplication.activity.CameraActivity;
 import com.example.aozun.testapplication.activity.DiscrollActivity;
 import com.example.aozun.testapplication.activity.LitePalActivity;
+import com.example.aozun.testapplication.activity.LottieActivity;
 import com.example.aozun.testapplication.activity.MPChartActivity;
 import com.example.aozun.testapplication.activity.ORMLiteActivity;
 import com.example.aozun.testapplication.activity.PwdViewActivity;
 import com.example.aozun.testapplication.activity.RenRenActivity;
 import com.example.aozun.testapplication.activity.Retrofit2Activity;
 import com.example.aozun.testapplication.activity.RxActivtity;
-import com.example.aozun.testapplication.activity.ViewsActivity;
 import com.example.aozun.testapplication.activity.ViewFlipperActivity;
+import com.example.aozun.testapplication.activity.ViewsActivity;
 import com.example.aozun.testapplication.activity.WelcomeActivity;
 import com.example.aozun.testapplication.activity.ZxingActivity;
 import com.example.aozun.testapplication.adapter.RecycleAdapter;
@@ -49,7 +50,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
     private RecyclerView hrecyclerView;
     private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "Litepal",
             "ORMLite", "RxJava", "PwdView", "MPAndroidChart", "Zxing", "Discroll",
-            "RenRenActivity","ViewFlipper","MyViews","WelcomePage","takePhoto"};//按钮为例
+            "RenRenActivity","ViewFlipper","MyViews","WelcomePage","TakePhoto","Lottie"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
     private List<String> datas = new ArrayList<>();
@@ -174,6 +175,9 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
             }
             if(data.equals(buts[15])){
                 intent=new Intent(MainActivity.this, CameraActivity.class);
+            }
+            if(data.equals(buts[16])){
+                intent=new Intent(MainActivity.this, LottieActivity.class);
             }
             if(intent != null){
                 MainActivity.this.startActivity(intent);
