@@ -27,7 +27,8 @@ import master.flame.danmaku.ui.widget.DanmakuView;
 /**
  * 简单的弹幕效果
  */
-public class VideoActivity extends BaseActivity implements DrawHandler.Callback, View.OnClickListener{
+public class
+VideoActivity extends BaseActivity implements DrawHandler.Callback, View.OnClickListener{
     private VideoView videoView;
     private DanmakuView danmakuView;
     private boolean showDanmaku;
