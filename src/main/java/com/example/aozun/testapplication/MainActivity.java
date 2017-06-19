@@ -15,6 +15,7 @@ import android.view.View;
 
 import com.example.aozun.testapplication.activity.BaseActivity;
 import com.example.aozun.testapplication.activity.CameraActivity;
+import com.example.aozun.testapplication.activity.CustomViewActivity;
 import com.example.aozun.testapplication.activity.DiscrollActivity;
 import com.example.aozun.testapplication.activity.LitePalActivity;
 import com.example.aozun.testapplication.activity.LottieActivity;
@@ -50,7 +51,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
     private RecyclerView hrecyclerView;
     private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "Litepal",
             "ORMLite", "RxJava", "PwdView", "MPAndroidChart", "Zxing", "Discroll",
-            "RenRenActivity","ViewFlipper","MyViews","WelcomePage","TakePhoto","Lottie"};//按钮为例
+            "RenRenActivity","ViewFlipper","MyViews","WelcomePage","TakePhoto","Lottie","ComstomViews"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
     private List<String> datas = new ArrayList<>();
@@ -178,6 +179,9 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
             }
             if(data.equals(buts[16])){
                 intent=new Intent(MainActivity.this, LottieActivity.class);
+            }
+            if(data.equals(buts[17])){
+                intent=new Intent(MainActivity.this, CustomViewActivity.class);
             }
             if(intent != null){
                 MainActivity.this.startActivity(intent);
