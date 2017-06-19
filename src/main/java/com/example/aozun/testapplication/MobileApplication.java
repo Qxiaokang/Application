@@ -20,10 +20,11 @@ import java.io.File;
  *
  */
 public class MobileApplication extends LitePalApplication{
-
+    private static MobileApplication mInstance = null;
     @Override
     public void onCreate(){
         super.onCreate();
+        mInstance = this;
         initImageloaders();//初始化imagloader
         CrashHandler.getInstance().init(getApplicationContext());
 
@@ -140,5 +141,11 @@ public class MobileApplication extends LitePalApplication{
         return options;
     }
 
-
+    /**
+     * @des 获取全局化的Application
+     * @return
+     */
+    public static MobileApplication getInstance() {
+        return mInstance;
+    }
 }
