@@ -183,4 +183,13 @@
     <declare-styleable name="PowerfulEditText">
         <attr name="et_type" format="integer"/>
     </declare-styleable>
+
+
+    <declare-styleable name="PicText">
+        <attr name="pic"  format="reference"></attr>
+        <attr name="picText1" format="string"></attr>
+        <attr name="picText2" format="string"></attr>
+        <attr name="picTextsize" format="dimension"></attr>
+        <attr name="picTextColor" format="color"></attr>
+    </declare-styleable>
 </resources>

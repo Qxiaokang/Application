@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="@dimen/bt_big_width"
-    android:layout_height="@dimen/bt_big_width"
+    android:layout_width="@dimen/pic_width"
+    android:layout_height="@dimen/pic_width"
     android:gravity="center"
     >
     <Button
         android:id="@+id/recybt"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/bt_big_margin"
+        android:layout_margin="@dimen/bt_height30"
         android:gravity="center"
         android:textStyle="bold"
-        android:textSize="@dimen/content_size"
+        android:textSize="@dimen/tv_sixe20"
         android:textColor="@color/bt_textvcolor1"
         android:background="@drawable/bt_bg_selct1"
         android:singleLine="true"
         android:ellipsize="end"
-
         />
         <!--android:singleLine="true"
         android:focusable="true"

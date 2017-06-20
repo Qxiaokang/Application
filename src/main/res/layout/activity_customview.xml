@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/window_layout"
+    >
+    <com.example.aozun.testapplication.views.PicText
+        android:id="@+id/zs_pt"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="@dimen/padding_text"
+        app:pic="@drawable/lintman1"
+        app:picText1="张  三"
+        app:picText2="13535353553"
+        app:picTextsize="@dimen/tv_sixe15"
+        app:picTextColor="@color/colorAccent"
+        android:layout_margin="@dimen/bt_margin"
+        />
+    <com.example.aozun.testapplication.views.PicText
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="@dimen/padding_text"
+        app:pic="@drawable/lintman1"
+        app:picText1="李  四"
+        app:picText2="18654565478"
+        app:picTextsize="@dimen/tv_sixe15"
+        app:picTextColor="@color/colorAccent"
+        android:layout_margin="@dimen/bt_margin"
+        />
+</LinearLayout>

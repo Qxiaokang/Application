@@ -39,7 +39,8 @@ public class LockActivity extends BaseActivity{
     private void initViews(){
         lockViewGroup = (GestureLockViewGroup) findViewById(R.id.GestureLockViewGroup_id);
         //lockViewGroup.setAnswer(new int[]{5, 10, 15, 20, 25,19,13,7,1,6,11,16,21,17,9,14,18,12,8,4,3,2});//设置密码
-        lockViewGroup.setAnswer(new int[]{5, 10, 15, 20, 25,19,13,7,1,6,11,16,21});//设置密码
+        //lockViewGroup.setAnswer(new int[]{5, 10, 15, 20, 25,19,13,7,1,6,11,16,21});//设置密码
+        lockViewGroup.setAnswer(new int[]{5,4,3,2,1});//设置密码
         lockViewGroup.setUnMatchExceedBoundary(5);//设置最大尝试次数
         lockViewGroup.setOnGestureLockViewListener(new GestureLockViewGroup.OnGestureLockViewListener(){
             @Override

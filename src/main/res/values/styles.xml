@@ -111,4 +111,14 @@
         <item name="android:background">@drawable/btn_big_red_style</item>
         <item name="android:singleLine">true</item>
     </style>
+
+    <style name="window_letf" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_window_left_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_window_left_out</item>
+    </style>
+
+    <style name="window_up">
+        <item name="android:windowEnterAnimation">@anim/anim_window_up_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_window_up_out</item>
+    </style>
 </resources>

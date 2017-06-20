@@ -36,6 +36,7 @@ import com.example.aozun.testapplication.utils.LogUtils;
 import com.example.aozun.testapplication.utils.MainApplication;
 import com.example.aozun.testapplication.utils.Netutil;
 import com.example.aozun.testapplication.utils.UniversalUtils;
+import com.idescout.sql.SqlScoutServer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -64,6 +65,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SqlScoutServer.create(this.getApplicationContext(),getPackageName());
         MainApplication.getInstance().addActivity(this);
         applicationShared.edit().putInt("pwdtimes",1).commit();//记录登入
         database = TestOpenHelp.getInstance(this).getWritableDatabase();
