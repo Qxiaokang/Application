@@ -71,7 +71,7 @@ public class RxActivtity extends BaseActivity implements View.OnClickListener{
 
     //初始化
     private void initViews(){
-        folders = new File[]{new File(path + File.separator + "xiao"), new File(path + File.separator + "Pictures")};
+        folders = new File[]{new File(path + File.separator + "images"), new File(path + File.separator + "images/takephotos")};
         pic_bt = (Button) findViewById(R.id.loadpic);
         pic_bt.setOnClickListener(this);
         picgrid = (GridView) findViewById(R.id.grid_v);

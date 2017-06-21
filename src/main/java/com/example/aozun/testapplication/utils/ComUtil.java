@@ -2,6 +2,7 @@ package com.example.aozun.testapplication.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.widget.Toast;
 
 import com.example.aozun.testapplication.MobileApplication;
 
@@ -11,6 +12,7 @@ import com.example.aozun.testapplication.MobileApplication;
 public class ComUtil{
     private Context context;
     private static ComUtil comUtil;
+    private Toast toast=null;
 
     private static Context getContext() {
         return MobileApplication.getInstance().getContext();
@@ -53,5 +55,15 @@ public class ComUtil{
     /**得到resouce对象*/
     public static Resources getResources(Context context) {
         return context.getResources();
+    }
+
+    //show toast
+    public void showToast(String text){
+        if(toast==null){
+            toast= Toast.makeText(context,text,Toast.LENGTH_LONG);
+        }else {
+            toast.setText(text);
+        }
+        toast.show();
     }
 }

@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:gravity="center_vertical"
     android:background="@drawable/systembg"
+    android:id="@+id/main_layout"
     >
 
     <android.support.v7.widget.RecyclerView

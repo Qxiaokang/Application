@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.Toast;
 
-import com.example.aozun.testapplication.MainActivity;
 import com.example.aozun.testapplication.R;
 import com.example.aozun.testapplication.service.LockService;
 import com.example.aozun.testapplication.utils.LogUtils;
@@ -56,7 +55,7 @@ public class LockActivity extends BaseActivity{
                     LockActivity.this.startService(intent);
                     //第一次登录的lock
                     if(islogin){
-                        intent=new Intent(LockActivity.this, MainActivity.class);
+                        intent=new Intent(LockActivity.this, SplashScreenActivity.class);
                         LockActivity.this.startActivity(intent);
                         LockActivity.this.finish();
                     }

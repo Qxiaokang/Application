@@ -1,9 +1,13 @@
 package com.example.aozun.testapplication;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,6 +16,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.aozun.testapplication.activity.BaseActivity;
 import com.example.aozun.testapplication.activity.CameraActivity;
@@ -27,6 +32,7 @@ import com.example.aozun.testapplication.activity.Retrofit2Activity;
 import com.example.aozun.testapplication.activity.RxActivtity;
 import com.example.aozun.testapplication.activity.ViewFlipperActivity;
 import com.example.aozun.testapplication.activity.ViewsActivity;
+import com.example.aozun.testapplication.activity.WebActivity;
 import com.example.aozun.testapplication.activity.WelcomeActivity;
 import com.example.aozun.testapplication.activity.ZxingActivity;
 import com.example.aozun.testapplication.adapter.RecycleAdapter;
@@ -52,7 +58,8 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
     private RecyclerView hrecyclerView;
     private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "Litepal",
             "ORMLite", "RxJava", "PwdView", "MPAndroidChart", "Zxing", "Discroll",
-            "RenRenActivity","ViewFlipper","MyViews","WelcomePage","TakePhoto","Lottie","ComstomViews"};//按钮为例
+            "RenRenActivity","ViewFlipper","MyViews","WelcomePage","TakePhoto","Lottie",
+            "ComstomViews","Web"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
     private List<String> datas = new ArrayList<>();
@@ -60,12 +67,14 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
     private int position;
     private int left;
     private SQLiteDatabase database;
+    private LinearLayout lin;
+    private String pic_path=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SqlScoutServer.create(this.getApplicationContext(),getPackageName());
+        SqlScoutServer.create(this,getPackageName());
         MainApplication.getInstance().addActivity(this);
         applicationShared.edit().putInt("pwdtimes",1).commit();//记录登入
         database = TestOpenHelp.getInstance(this).getWritableDatabase();
@@ -78,6 +87,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
 
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void initViews(){
         //查询name字段
         Map<String, Object> map = TestOpenHelp.getInstance(this).queryMap("select name from recyclerlist ");
@@ -102,6 +112,8 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
                 datas.add(strings[i]);
             }
         }
+        lin= (LinearLayout) findViewById(R.id.main_layout);
+        pic_path=getIntent().getStringExtra("pic_path");
         hrecyclerView = (RecyclerView) findViewById(R.id.recycleview);
         linearmanager = new LinearLayoutManager(this);
         linearmanager.setOrientation(LinearLayoutManager.HORIZONTAL);//设置recyclerVeiw横向滚动
@@ -117,6 +129,10 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
         rca.setOnItemclickListener(this);
         rca.setOnlongItemclickListener(this);
         itemTouchHelper.attachToRecyclerView(hrecyclerView);
+        if(pic_path!=null){
+            LogUtils.d("---picpath:"+pic_path);
+            lin.setBackground(new BitmapDrawable(BitmapFactory.decodeFile(pic_path)));
+        }
         Log.e("onCreate:", "position:" + position1 + "left:" + left1);
     }
     //点击item
@@ -184,6 +200,9 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
             }
             if(data.equals(buts[17])){
                 intent=new Intent(MainActivity.this, CustomViewActivity.class);
+            }
+            if(data.equals(buts[18])){
+                intent=new Intent(MainActivity.this, WebActivity.class);
             }
             if(intent != null){
                 MainActivity.this.startActivity(intent);

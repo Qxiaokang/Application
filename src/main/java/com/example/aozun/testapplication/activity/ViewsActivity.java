@@ -59,7 +59,7 @@ public class ViewsActivity extends BaseActivity implements View.OnClickListener{
         openMenuTextView.setTvlistener(new OpenMenuTextView.Tvlistener(){
             @Override
             public void setOnTvlistener(View view){
-                //展开
+                //open
                 if(openMenuTextView.getAdd()){
                     setImageVisible(View.VISIBLE);
                     translateX(imageViewa, 0, 300);
@@ -69,7 +69,7 @@ public class ViewsActivity extends BaseActivity implements View.OnClickListener{
                     translateY(imageViewc, 0, -260);
                     translateY(imageViewd, 0, -300);
                 }
-                //隐藏
+                //hidden
                 if(openMenuTextView.getDel()){
                     translateX(imageViewa, 300, 0);
                     translateX(imageViewb, 260, 0);

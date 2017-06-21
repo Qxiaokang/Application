@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.aozun.testapplication.activity.SplashScreenActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/iv_splash"
+        android:background="@drawable/systembg"
+        />
+    <Button
+        android:id="@+id/bt_splash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/bt_textvcolor1"
+        android:background="@drawable/bt_bg_selct1"
+        android:layout_margin="@dimen/bt_big_margin"
+        android:layout_alignParentRight="true"
+        android:padding="@dimen/padding_10"
+        android:textSize="@dimen/tv_sixe15"
+        />
+</RelativeLayout>

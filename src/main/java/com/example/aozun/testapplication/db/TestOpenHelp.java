@@ -1,9 +1,13 @@
 package com.example.aozun.testapplication.db;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.aozun.testapplication.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,10 +43,11 @@ public class TestOpenHelp extends SQLiteOpenHelper{
     }
 
     private static final String RECYCLER = "create table recyclerlist(reid integer primary key,name varchar(1000) not null)";
-
+    private static final String T_PIC="create table t_pic(pic_id integer primary key,pic_name varchar(100) not null,pic_path varchar(300) not null)";
     @Override
     public void onCreate(SQLiteDatabase db){
         db.execSQL(RECYCLER);
+        db.execSQL(T_PIC);
     }
 
     @Override
@@ -116,5 +121,49 @@ public class TestOpenHelp extends SQLiteOpenHelper{
 
     public Cursor getCursor(String sql){
         return db.rawQuery(sql, null);
+    }
+
+    /**  新增数据  */
+    public boolean insert(String tableName,String [] fields,String [] fieldVals){
+        ContentValues cv=new ContentValues();
+        for(int i=0;i<fields.length;i++){
+            cv.put(fields[i], fieldVals[i]);
+        }
+        if(db.insert(tableName, null, cv)==1){
+            return true;
+        }
+        return false;
+    }
+
+    /**  更新数据   */
+    public boolean update(String tableName,String [] fields,String [] fieldVals,String where){
+        ContentValues cv=new ContentValues();
+        for(int i=0;i<fields.length;i++){
+            cv.put(fields[i], fieldVals[i]);
+        }
+        int m = db.update(tableName, cv, where, null);
+        if(m==1){
+            return true;
+        }
+        return false;
+    }
+
+    /** 插入、更新、删除 数据  */
+    public boolean cudDB(String sql){
+        boolean b = false;
+        //如果要对数据进行更改，就调用此方法得到用于操作数据库的实例,该方法以读和写方式打开数据库
+        db.beginTransaction();   // 开始事务
+        try{
+            db.execSQL(sql);
+            //调用此方法会在执行到endTransaction() 时提交当前事务，如果不调用此方法会回滚事务
+            db.setTransactionSuccessful();
+            b = true;
+        }catch(SQLException e){
+            LogUtils.d("sql:"+e.toString());
+            b=false;
+        }finally{
+            db.endTransaction();//由事务的标志决定是提交事务，还是回滚事务
+        }
+        return b;
     }
 }
