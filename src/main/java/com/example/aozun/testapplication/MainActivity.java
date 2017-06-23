@@ -1,12 +1,12 @@
 package com.example.aozun.testapplication;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -87,7 +87,6 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
 
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void initViews(){
         //查询name字段
         Map<String, Object> map = TestOpenHelp.getInstance(this).queryMap("select name from recyclerlist ");
@@ -131,7 +130,11 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
         itemTouchHelper.attachToRecyclerView(hrecyclerView);
         if(pic_path!=null){
             LogUtils.d("---picpath:"+pic_path);
-            lin.setBackground(new BitmapDrawable(BitmapFactory.decodeFile(pic_path)));
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+                lin.setBackground(new BitmapDrawable(BitmapFactory.decodeFile(pic_path)));
+            }else {
+                lin.setBackgroundDrawable(Drawable.createFromPath(pic_path));
+            }
         }
         Log.e("onCreate:", "position:" + position1 + "left:" + left1);
     }

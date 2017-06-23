@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Test</string>
+    <string name="app_name">TestApp</string>
     <!-- Preference framework strings. -->
     <string name="cancel">Cancel</string>
     <!-- The title of the date picker dialog. [CHAR LIMIT=NONE] -->

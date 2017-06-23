@@ -15,6 +15,16 @@ public class InitContent{
     private String photoPath;
     private int cacheSize=10*1024*1024;
     private File fileDir;
+    private String userId="";
+
+    public String getUserId(){
+        return userId;
+    }
+
+    public void setUserId(String userId){
+        this.userId = userId;
+    }
+
     private InitContent(){
     }
 

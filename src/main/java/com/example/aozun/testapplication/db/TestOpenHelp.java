@@ -44,10 +44,14 @@ public class TestOpenHelp extends SQLiteOpenHelper{
 
     private static final String RECYCLER = "create table recyclerlist(reid integer primary key,name varchar(1000) not null)";
     private static final String T_PIC="create table t_pic(pic_id integer primary key,pic_name varchar(100) not null,pic_path varchar(300) not null)";
+    private static final String T_USER_INFO="create table t_user(user_id integer primary key autoincrement,user_name varchar(20) not null,user_pwd varchar(50) not null,user_ch_name varchar(10) not null,user_sex integer not null, user_province varchar(10),user_city varchar(10),user_picurl varchar(200))";
+    private static final String INIT_USER=("insert into t_user(user_name,user_pwd,user_ch_name,user_sex,user_province,user_city) values ('oa123','abc123','刘超',1,'湖北','武汉')");
     @Override
     public void onCreate(SQLiteDatabase db){
         db.execSQL(RECYCLER);
         db.execSQL(T_PIC);
+        db.execSQL(T_USER_INFO);
+        db.execSQL(INIT_USER);
     }
 
     @Override
