@@ -10,6 +10,7 @@
     <dimen name="pic_width">200dp</dimen>
     <dimen name="padding_text">5dp</dimen>
     <dimen name="padding_10">10dp</dimen>
+    <dimen name="padding_5">5dp</dimen>
     <dimen name="bt_big_width">300dp</dimen>
     <dimen name="bt_big_margin">50dp</dimen>
     <dimen name="bt_height">60dp</dimen>

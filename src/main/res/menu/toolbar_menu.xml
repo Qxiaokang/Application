@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/cancel" android:id="@+id/menu_cancel" android:orderInCategory="3"/>
+    <item android:title="设置" android:id="@+id/menu_set" android:orderInCategory="2"/>
+    <item android:title="进入系统" android:id="@+id/menu_enter" android:orderInCategory="1"/>
+</menu>
