@@ -92,6 +92,8 @@ dependencies {
     compile 'com.idescout.sql:sqlscout-server:2.0'
     compile 'com.google.android:flexbox:0.3.0-alpha3'
     compile files('libs/open_sdk_r5788.jar')
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    compile files('libs/MobCommons-2017.0608.1618.jar')
 }
 
 
