@@ -108,3 +108,11 @@ native <methods>;
 ##这里需要改成解析到哪个  javabean
 -keep class com.appstore.bean.** { *; }
 ##---------------End: proguard configuration for Gson  ----------
+-keep class cn.sharesdk.**{*;}
+-keep class com.sina.**{*;}
+-keep class **.R$* {*;}
+-keep class **.R{*;}
+-keep class com.mob.**{*;}
+-dontwarn com.mob.**
+-dontwarn cn.sharesdk.**
+-dontwarn **.R$*
