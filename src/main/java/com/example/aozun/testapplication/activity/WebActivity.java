@@ -24,9 +24,6 @@ import com.google.gson.Gson;
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.auth.QQToken;
 import com.tencent.connect.common.Constants;
-import com.tencent.mm.opensdk.modelmsg.SendAuth;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.tencent.open.utils.HttpUtils;
 import com.tencent.tauth.IRequestListener;
 import com.tencent.tauth.IUiListener;
@@ -61,8 +58,6 @@ public class WebActivity extends BaseActivity implements View.OnClickListener{
     private static final String APP_ID = "1106166855";
     private boolean isnull=false;
     private static final String WX_APPID="";
-    private IWXAPI iwxapi=null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -95,8 +90,6 @@ public class WebActivity extends BaseActivity implements View.OnClickListener{
         mTencent = Tencent.createInstance(APP_ID, this.getApplicationContext());
         baseUiListener = new BaseUiListener();
         apiListener = new ApiListener();
-        iwxapi= WXAPIFactory.createWXAPI(this,WX_APPID,true);
-        iwxapi.registerApp(WX_APPID);
     }
 
     WebChromeClient webChromeClient = new WebChromeClient(){
@@ -363,10 +356,5 @@ public class WebActivity extends BaseActivity implements View.OnClickListener{
         }
         return b;
     }
-    private void loginWechat(){
-        SendAuth.Req req= new SendAuth.Req();
-        req.scope = "snsapi_userinfo";
-        req.state = "wechat_sdk_demo_test";
-        iwxapi.sendReq(req);
-    }
+
 }

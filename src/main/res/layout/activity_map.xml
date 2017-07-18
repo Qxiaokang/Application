@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.aozun.testapplication.activity.MapActivity">
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/map_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        >
+    </com.baidu.mapapi.map.MapView>
+    <ImageView
+        android:id="@+id/local_icon"
+        android:layout_width="@dimen/bt_height30"
+        android:layout_height="@dimen/bt_height30"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/location_icon1"
+        android:scaleType="fitXY"
+        android:layout_margin="@dimen/bt_margin"
+        />
+</RelativeLayout>

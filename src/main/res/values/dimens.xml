@@ -16,6 +16,10 @@
     <dimen name="bt_height">60dp</dimen>
     <dimen name="tv_sixe15">15dp</dimen>
     <dimen name="tv_sixe20">20dp</dimen>
-    <dimen name="bt_height30">30dp</dimen>
+    <dimen name="tv_sixe25">25dp</dimen>
+    <dimen name="tv_sixe35">35dp</dimen>
+    <dimen name="tv_size50">50dp</dimen>
+    <dimen name="bt_height30">40dp</dimen>
+    <dimen name="bt_height50">40dp</dimen>
     <dimen name="pic_height">100dp</dimen>
 </resources>

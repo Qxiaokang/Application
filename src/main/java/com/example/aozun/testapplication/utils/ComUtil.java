@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.widget.Toast;
 
-import com.example.aozun.testapplication.MobileApplication;
-
 /**
  * Created by Admin on 2017/6/9.
  */
@@ -15,7 +13,7 @@ public class ComUtil{
     private Toast toast=null;
 
     private static Context getContext() {
-        return MobileApplication.getInstance().getContext();
+        return AppApplication.getInstance().getContext();
     }
     private ComUtil(Context context){
         this.context=context;

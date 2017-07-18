@@ -12,7 +12,7 @@
         android:layout_margin="@dimen/bt_height30"
         android:gravity="center"
         android:textStyle="bold"
-        android:textSize="@dimen/tv_sixe20"
+        android:textSize="@dimen/tv_sixe25"
         android:textColor="@color/bt_textvcolor1"
         android:background="@drawable/bt_bg_selct1"
         android:singleLine="true"

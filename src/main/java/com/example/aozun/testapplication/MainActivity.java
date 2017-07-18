@@ -25,6 +25,7 @@ import com.example.aozun.testapplication.activity.DiscrollActivity;
 import com.example.aozun.testapplication.activity.LitePalActivity;
 import com.example.aozun.testapplication.activity.LottieActivity;
 import com.example.aozun.testapplication.activity.MPChartActivity;
+import com.example.aozun.testapplication.activity.MapActivity;
 import com.example.aozun.testapplication.activity.ORMLiteActivity;
 import com.example.aozun.testapplication.activity.PwdViewActivity;
 import com.example.aozun.testapplication.activity.RenRenActivity;
@@ -59,7 +60,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
     private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "Litepal",
             "ORMLite", "RxJava", "PwdView", "MPAndroidChart", "Zxing", "Discroll",
             "RenRenActivity","ViewFlipper","MyViews","WelcomePage","TakePhoto","Lottie",
-            "ComstomViews","Web"};//按钮为例
+            "ComstomViews","Web","Map"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
     private List<String> datas = new ArrayList<>();
@@ -206,6 +207,9 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
             }
             if(data.equals(buts[18])){
                 intent=new Intent(MainActivity.this, WebActivity.class);
+            }
+            if(data.equals(buts[19])){
+                intent=new Intent(MainActivity.this, MapActivity.class);
             }
             if(intent != null){
                 MainActivity.this.startActivity(intent);

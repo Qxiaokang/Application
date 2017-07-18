@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>登 录</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="jquery-1.js"></script>
+    <script type="text/javascript">
+function formSubmit(){
+   var content1=document.getElementById("text_name").value;
+   var content2=document.getElementById("text_pwd").value;
+   var content=content1+"-and-"+content2;
+   window.android.getResult(content);
+}
+</script>
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<style type="text/css">
+body {
+	/*background-color: #0066ff;*/
+	background-image: url(bg.jpg);
+	color: #333;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	overflow:hidden;
+
+}
+.main {
+	width: 400px;
+	height: 300px;
+	padding: 0;
+	margin: 0px auto;
+	margin-top: 15%;
+	border-radius: 10px;
+	background-image: url(bg.jpg);
+	
+	
+	
+}
+.login {
+	color: #EEF1F2;
+	margin: 0px auto;
+	margin-top :20px;
+	text-align: center;	
+	font-size: 25px;
+
+}
+.inputtext {
+	color: #EEF1F2;
+	font-size: 20px;
+	text-align: center;
+	margin-top: 10px;
+	}
+.remebertext{
+	color: #EEF1F2;
+	font-size: 15px;
+	text-align: center;
+	margin-top: 10px;
+	
+}
+.btstyle{
+	color: #EEF1F2;
+	font-size: 20px;
+	text-align: center;
+	width: 200px;
+	background-color: #8C9BD0;
+	margin-top: 20px;
+}
+	
+#leftPie, #rightPie {
+	position: absolute;
+	top: 0px;
+	background-color: #8C9BD0;
+	width: 50%;
+	height: 100%;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+
+#leftPie {
+	left: 0;
+}
+
+#rightPie {
+	left: 50%;
+}
+</style>
+
+
+
+  </head>
+  
+  <body>
+ <form >
+<div class="main">
+<table width=100% >
+	<tr><td>
+	<div class="login">
+	<strong>L o g i n</strong></div>
+	</td></tr>
+	
+	<tr>
+	<td>
+	<div class="inputtext">
+	<pre>用 户 名：<input type="text" name="userID" id="text_name" /></pre></div>
+	</td>
+	</tr>
+	
+	<tr>
+	<td>
+	<div class="inputtext">
+	<pre>密    码：<input type="password" name="pwd" id="text_pwd"/></pre></div>
+	</td>
+	</tr>
+	
+	<tr>
+	<td>
+	<div class="remebertext">
+	<input name="remeber" type="checkbox" value="">记住密码</input>
+	<a  style="color: #EEF1F2;margin-left: 100px;"   href="Login.html" title="忘记密码">忘记密码</a>
+	</div>
+	</td>
+	</tr>
+	
+	<tr>
+	<td align="center">
+	<input  id="loginForm"  type="submit" value="登  录" class="btstyle" onclick="window.android.LoginFunction()"></input>
+	</td>
+	</tr>
+</table>
+</div>
+</form> 
+  <div id="leftPie"></div>
+  <div id="rightPie"></div>
+  <!-- <div class="main"></div> -->
+  <script type="text/javascript">
+  
+  /*
+裁剪效果
+o:jq
+d:方向，1=向左，2=向右
+n:递减的单位（相素）
+*/
+function clip(o, d, n) {
+	var w = o.width();
+	var h = o.height();
+	var offset = o.offset();
+	var l = offset.left;
+	var t = offset.top;
+	var pw = o.parent().width();
+	if (d == 1) {
+		w -= n;
+		o.width(w);
+		return w > 0;
+	}
+	else if (d == 2) {
+		l += n;
+		o.css("left", l);
+		return pw > l;
+	}
+	return true;
+}
+
+function clipL() {
+	var r = clip($("#leftPie"), 1, 20);
+	if (!r) {
+		clearInterval(timL);
+		$("#leftPie").remove();
+	}
+}
+var timL = setInterval("clipL()", 100);
+
+function clipR() {
+	var r = clip($("#rightPie"), 2, 20);
+	if (!r) {
+		clearInterval(timR);
+		$("#rightPie").remove();
+	}
+}
+var timR = setInterval("clipR()", 100);
+  </script>
+   
+   
+  
+  </body>
+  
+</html>

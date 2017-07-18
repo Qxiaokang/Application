@@ -192,4 +192,16 @@
         <attr name="picTextsize" format="dimension"></attr>
         <attr name="picTextColor" format="color"></attr>
     </declare-styleable>
+
+    <declare-styleable name="CountDownView">
+        <attr name="max_minute" format="integer"/>
+        <attr name="min_minute" format="integer"/>
+        <attr name="mTextSize" format="dimension"/>
+        <attr name="mTBTextSize" format="dimension"/>
+        <attr name="mTextColor" format="color"/>
+        <attr name="mTBTextColor" format="color"/>
+        <attr name="mStartTextSize" format="dimension"/>
+        <attr name="mStartTextColor" format="color"/>
+
+    </declare-styleable>
 </resources>

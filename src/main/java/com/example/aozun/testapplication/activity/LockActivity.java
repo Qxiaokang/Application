@@ -32,7 +32,10 @@ public class LockActivity extends BaseActivity{
             islogin=false;
             stopService(intent);//进入锁屏后关闭锁屏监听
         }
-        initViews();
+        intent=new Intent(LockActivity.this, SplashScreenActivity.class);
+        LockActivity.this.startActivity(intent);
+        LockActivity.this.finish();
+        //initViews();
     }
 
     private void initViews(){

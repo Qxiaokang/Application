@@ -1,22 +1,31 @@
 package com.example.aozun.testapplication.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.SystemClock;
 import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.aozun.testapplication.R;
 import com.example.aozun.testapplication.adapter.GridAdapter;
+import com.example.aozun.testapplication.utils.ComUtil;
 import com.example.aozun.testapplication.utils.LogUtils;
 import com.example.aozun.testapplication.utils.MainApplication;
+import com.example.aozun.testapplication.views.CountDownView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -50,7 +59,7 @@ import rx.schedulers.Schedulers;
  * 在一个正确运行的事件序列中, onCompleted() 和 onError() 有且只有一个，并且是事件序列中的最后一个。
  * 需要注意的是，onCompleted() 和 onError() 二者也是互斥的，即在队列中调用了其中一个，就不应该再调用另一个。
  */
-public class RxActivtity extends BaseActivity implements View.OnClickListener{
+public class RxActivtity extends BaseActivity implements View.OnClickListener, View.OnTouchListener{
     private Button pic_bt;
     private GridAdapter gridAdapter;
     private GridView picgrid;
@@ -61,6 +70,15 @@ public class RxActivtity extends BaseActivity implements View.OnClickListener{
     private ImageView imageView;
     private Button time_bt;
     private Subscription subscription;
+    private WindowManager windowManager;
+    private WindowManager.LayoutParams windowParams;
+    private View layoutView;
+    private TextView tv_windowClose;
+    private Button bt_start, bt_reset, bt_full;
+    private float startX,startY;
+    private int statusHeight;
+    private CountDownView countDownView;
+    private int startOrStop=1;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -76,9 +94,8 @@ public class RxActivtity extends BaseActivity implements View.OnClickListener{
         pic_bt.setOnClickListener(this);
         picgrid = (GridView) findViewById(R.id.grid_v);
         piclinear = (LinearLayout) findViewById(R.id.sl_linear);
-        time_bt= (Button) findViewById(R.id.time_id);
+        time_bt = (Button) findViewById(R.id.time_id);
         time_bt.setOnClickListener(this);
-
     }
 
     //添加imageView
@@ -92,16 +109,64 @@ public class RxActivtity extends BaseActivity implements View.OnClickListener{
 
     @Override
     public void onClick(View view){
-        int index=0;
+        int index = 0;
         switch(view.getId()){
             case R.id.loadpic:
                 initRx();
                 break;
             case R.id.time_id:
-                startTime();
-
+                //startTime();
+                createWindow();
+                break;
+            case R.id.bt_movewindow_reset:
+                if(countDownView!=null){
+                    countDownView.resetText();
+                    bt_start.setText("Start");
+                    startOrStop=1;
+                }
+                break;
+            case R.id.bt_movewindow_start:
+                if(startOrStop%2==1){
+                    if(countDownView!=null){
+                        countDownView.startCountDown();
+                        bt_start.setText("Stop");
+                    }
+                }
+                if(startOrStop%2==0){
+                    if(countDownView!=null){
+                        countDownView.stopCountDown();
+                        bt_start.setText("Start");
+                    }
+                }
+                startOrStop++;
+                break;
+            case R.id.bt_movewindow_fullscreen:
+                LogUtils.e("FullScreen");
+                Intent intent=new Intent(RxActivtity.this.getApplication(),CountDownFullActivity.class);
+                intent.putExtra("leftInt",countDownView.getSelectIntLeft());
+                intent.putExtra("rightInt",countDownView.getSelectIntRight());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getApplication().startActivity(intent);
+                if(layoutView!=null){
+                    layoutView.setVisibility(View.INVISIBLE);
+                }
+                break;
+            case R.id.tv_movewindow_close:
+                if(windowManager != null && layoutView != null){
+                    windowManager.removeView(layoutView);
+                }
+                break;
+            default:
                 break;
         }
+    }
+
+    @Override
+    protected void onResume(){
+        if(layoutView!=null){
+            layoutView.setVisibility(View.VISIBLE);
+        }
+        super.onResume();
     }
 
     //rxjava 加载图片
@@ -165,7 +230,6 @@ public class RxActivtity extends BaseActivity implements View.OnClickListener{
             }
 
             @Override
-
             public void onNext(String s){
                 LogUtils.d("onNext: " + s);
             }
@@ -218,37 +282,33 @@ public class RxActivtity extends BaseActivity implements View.OnClickListener{
         //或者
         observable.subscribe(observer);
     }
+
     //利用Rxjava计时
     private void startTime(){
-        List<String> list=new ArrayList<>();
-        int i=1;
-        while(i<3601){
-            list.add(i+"");
+        List<String> list = new ArrayList<>();
+        int i = 1;
+        while(i < 3601){
+            list.add(i + "");
             i++;
         }
-        String [] str= new String[list.size()];
+        String[] str = new String[list.size()];
         for(int j = 0; j < list.size(); j++){
-            str[j]=list.get(j);
+            str[j] = list.get(j);
         }
-
-
-     subscription= Observable.from(str).map(new Func1<String, Integer>(){
-          @Override
-          public Integer call(String s){
-                  SystemClock.sleep(1000);
-                  LogUtils.e("thread--i:"+Integer.parseInt(s));
-              return Integer.parseInt(s);
-          }
-      }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-              .subscribe(new Action1<Integer>(){
-                  @Override
-                  public void call(Integer integer){
-                      LogUtils.e("main:--i:"+integer);
-                      time_bt.setText(integer+"s");
-                  }
-
-              });
-
+        subscription = Observable.from(str).map(new Func1<String, Integer>(){
+            @Override
+            public Integer call(String s){
+                SystemClock.sleep(1000);
+                LogUtils.e("thread--i:" + Integer.parseInt(s));
+                return Integer.parseInt(s);
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Integer>(){
+            @Override
+            public void call(Integer integer){
+                LogUtils.e("main:--i:" + integer);
+                time_bt.setText(integer + "s");
+            }
+        });
     }
 
     @Override
@@ -260,8 +320,66 @@ public class RxActivtity extends BaseActivity implements View.OnClickListener{
 
     //取消订阅
     private void unSubscribe(){
-        if(subscription!=null){
+        if(subscription != null){
             subscription.unsubscribe();
         }
+    }
+    //create move window
+    private void createWindow(){
+        //get phone status height
+        statusHeight=getResources().getDimensionPixelSize(getResources().getIdentifier("status_bar_height", "dimen", "android"));
+        windowManager = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+        windowParams = new WindowManager.LayoutParams();
+        windowParams.width = 600;
+        windowParams.height = ComUtil.dip2Px(320);
+        windowParams.type = WindowManager.LayoutParams.TYPE_PHONE;
+        //allow translucent
+        windowParams.format= PixelFormat.TRANSLUCENT;
+        //windowParams.format = PixelFormat.RGBA_8888;
+        windowParams.x=0;
+        windowParams.y=0;
+        windowParams.alpha=0.6f;
+        windowParams.gravity=Gravity.LEFT|Gravity.TOP;
+        windowParams.flags= WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;//lose focus
+        layoutView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.move_window, null);
+        windowManager.addView(layoutView, windowParams);
+        bt_start = (Button) layoutView.findViewById(R.id.bt_movewindow_start);
+        bt_reset = (Button) layoutView.findViewById(R.id.bt_movewindow_reset);
+        bt_full = (Button) layoutView.findViewById(R.id.bt_movewindow_fullscreen);
+        tv_windowClose = (TextView) layoutView.findViewById(R.id.tv_movewindow_close);
+        countDownView= (CountDownView) layoutView.findViewById(R.id.count_view);
+        bt_start.setOnClickListener(this);
+        bt_full.setOnClickListener(this);
+        bt_reset.setOnClickListener(this);
+        tv_windowClose.setOnClickListener(this);
+        layoutView.setOnTouchListener(this);
+    }
+
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent){
+        if(view.getId() == layoutView.getId()){
+            float rawX = motionEvent.getRawX();
+            float rawY = motionEvent.getRawY();
+            float startTX = motionEvent.getX();
+            float startTY = motionEvent.getY();
+            switch(motionEvent.getAction()){
+                case MotionEvent.ACTION_DOWN:
+                    startX=motionEvent.getX();
+                    startY=motionEvent.getY();
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    LogUtils.i("rawX:" + rawX + "  rawY:" + rawY + " startX:" + startX + "  startY:" + startY+"  measuredWidth:"+view.getMeasuredWidth());
+                    if(startX>0&&startX<view.getWidth()&&startY>0&&startY<view.getHeight()){
+                        windowParams.x = (int) (rawX-startX);
+                        windowParams.y = (int) (rawY-startY-statusHeight);
+                        windowManager.updateViewLayout(layoutView, windowParams);
+                    }
+                    break;
+                case MotionEvent.ACTION_UP:
+                    break;
+            }
+            return true;
+        }
+        return true;
     }
 }

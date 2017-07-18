@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.aozun.testapplication.views.MRelativelayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.aozun.testapplication.activity.CountDownFullActivity"
+    android:background="@color/colorBlack1"
+    android:id="@+id/ly_relative"
+    >
+    <com.example.aozun.testapplication.views.CountDownView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/full_countdown"
+        app:mStartTextSize="@dimen/tv_size50"
+        app:mStartTextColor="@color/colorwhite"
+        />
+</com.example.aozun.testapplication.views.MRelativelayout>
