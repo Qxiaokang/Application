@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    >
+    <TextView
+        android:id="@+id/img_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="@dimen/padding_10"
+        android:text="删 除"
+        android:textColor="@color/bt_textvcolor1"
+        android:textSize="@dimen/tv_sixe15"
+        android:background="@drawable/tv_bg_color1"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorwhite" />
+
+    <TextView
+        android:id="@+id/img_copy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="@dimen/padding_10"
+        android:text="复 制"
+        android:textColor="@color/bt_textvcolor1"
+        android:textSize="@dimen/tv_sixe15"
+        android:background="@drawable/tv_bg_color1"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorwhite" />
+
+    <TextView
+        android:id="@+id/img_cut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="@dimen/padding_10"
+        android:text="剪 切"
+        android:textColor="@color/bt_textvcolor1"
+        android:textSize="@dimen/tv_sixe15"
+        android:background="@drawable/tv_bg_color1"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorwhite" />
+
+    <TextView
+        android:id="@+id/img_preview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="@dimen/padding_10"
+        android:text="查 看"
+        android:textColor="@color/bt_textvcolor1"
+        android:textSize="@dimen/tv_sixe15"
+        android:background="@drawable/tv_bg_color1"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorwhite" />
+    <TextView
+        android:id="@+id/dialog_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/padding_5"
+        android:text="取   消"
+        android:textColor="@color/bt_textvcolor1"
+        android:textSize="@dimen/tv_sixe20"
+        android:background="@drawable/tv_bg_color1"
+        android:clickable="true"
+        />
+</LinearLayout>

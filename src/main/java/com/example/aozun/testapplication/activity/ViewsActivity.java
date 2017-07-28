@@ -3,16 +3,20 @@ package com.example.aozun.testapplication.activity;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
+import android.graphics.drawable.Animatable;
 import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.aozun.testapplication.R;
+import com.example.aozun.testapplication.utils.LogUtils;
 import com.example.aozun.testapplication.utils.MainApplication;
 import com.example.aozun.testapplication.utils.UniversalUtils;
 import com.example.aozun.testapplication.views.OpenMenuTextView;
@@ -23,7 +27,7 @@ import com.example.aozun.testapplication.views.ShopButton;
  * 自定义view类
  */
 
-public class ViewsActivity extends BaseActivity implements View.OnClickListener{
+public class ViewsActivity extends AppCompatActivity implements View.OnClickListener{
     private Button snackDel, snackAdd, endbt;//删除,添加,添加完成的按钮
     private ShopButton shopButton;//加入购物车的按钮
     private OpenMenuTextView openMenuTextView;//菜单按钮
@@ -82,8 +86,8 @@ public class ViewsActivity extends BaseActivity implements View.OnClickListener{
         });
         imageViewa.setOnClickListener(this);
 
-        //appCompatImageView= (AppCompatImageView) findViewById(R.id.img_anim);
-        //appCompatImageView.setOnClickListener(this);
+        appCompatImageView= (AppCompatImageView) findViewById(R.id.img_anim);
+        appCompatImageView.setOnClickListener(this);
 
 
     }
@@ -108,18 +112,18 @@ public class ViewsActivity extends BaseActivity implements View.OnClickListener{
                 UniversalUtils.getInstance().showToast(ViewsActivity.this, "点击签到");
                 break;
 
-           /* case R.id.img_anim:
+            case R.id.img_anim:
                 UniversalUtils.getInstance().showToast(ViewsActivity.this,"animImage");
                 //VectorDrawable轨迹动画
-                *//*ImageView imageView= (ImageView) view;
+                ImageView imageView= (ImageView) view;
                 Drawable drawable=imageView.getDrawable();
                 LogUtils.d("onclick+");
                 if(drawable instanceof Animatable){
                     LogUtils.d("start");
                     ((Animatable) drawable).start();
-                }*//*
+                }
                 anim(view);
-                break;*/
+                break;
             default:
                 break;
         }

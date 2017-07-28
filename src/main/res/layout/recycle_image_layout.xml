@@ -1,12 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+<com.example.aozun.testapplication.views.MTRelativelayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin"
+    >
     <ImageView
         android:id="@+id/recycle_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorBlack"
-        android:layout_margin="@dimen/padding_10"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitStart"
         />
-</LinearLayout>
+    <CheckBox
+        android:id="@+id/iv_check"
+        android:layout_width="@dimen/margin"
+        android:layout_height="@dimen/margin"
+        android:alpha="0.6"
+        android:button="@null"
+        android:background="@drawable/bg_checkbox"
+        android:layout_alignLeft="@+id/recycle_image"
+        android:layout_alignTop="@+id/recycle_image"
+        />
+    <TextView
+        android:id="@+id/tv_createtime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="创建日期:"
+        android:gravity="left|center_vertical"
+        android:textSize="@dimen/tv_sixe15"
+        android:textColor="@color/colorBlack1"
+        android:layout_alignLeft="@+id/recycle_image"
+        android:layout_below="@+id/recycle_image"
+        android:layout_marginTop="@dimen/padding_10"
+        />
+    <TextView
+        android:id="@+id/tv_image_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|center_vertical"
+        android:text="未上传"
+        android:textColor="@color/colorRed"
+        android:textSize="@dimen/tv_sixe15"
+        android:layout_alignLeft="@+id/recycle_image"
+        android:layout_below="@+id/tv_createtime"
+        android:layout_marginTop="@dimen/padding_10"
+        android:layout_marginBottom="@dimen/margin"
+        />
+    <LinearLayout
+        android:id="@+id/layout_include"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/recycle_image"
+        >
+    <include
+        layout="@layout/dialog_layout1"
+        />
+    </LinearLayout>
+</com.example.aozun.testapplication.views.MTRelativelayout>

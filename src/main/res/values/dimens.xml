@@ -7,9 +7,11 @@
     <dimen name="content_size">25dp</dimen>
     <dimen name="btDB_size">35dp</dimen>
     <dimen name="margin">20dp</dimen>
+    <dimen name="margin30">30dp</dimen>
     <dimen name="pic_width">200dp</dimen>
     <dimen name="padding_text">5dp</dimen>
     <dimen name="padding_10">10dp</dimen>
+    <dimen name="padding_15">15dp</dimen>
     <dimen name="padding_5">5dp</dimen>
     <dimen name="bt_big_width">300dp</dimen>
     <dimen name="bt_big_margin">50dp</dimen>
@@ -19,7 +21,7 @@
     <dimen name="tv_sixe25">25dp</dimen>
     <dimen name="tv_sixe35">35dp</dimen>
     <dimen name="tv_size50">50dp</dimen>
-    <dimen name="bt_height30">40dp</dimen>
-    <dimen name="bt_height50">40dp</dimen>
+    <dimen name="bt_height30">30dp</dimen>
+    <dimen name="bt_height50">50dp</dimen>
     <dimen name="pic_height">100dp</dimen>
 </resources>

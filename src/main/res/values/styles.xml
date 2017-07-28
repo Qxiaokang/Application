@@ -121,4 +121,11 @@
         <item name="android:windowEnterAnimation">@anim/anim_window_up_in</item>
         <item name="android:windowExitAnimation">@anim/anim_window_up_out</item>
     </style>
+
+<!--transparent  dialot-->
+    <style name="Translucent_Notitle" parent="android:Theme.Dialog">
+        <item name="android:background">#00000000</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
 </resources>

@@ -192,7 +192,7 @@
         <attr name="picTextsize" format="dimension"></attr>
         <attr name="picTextColor" format="color"></attr>
     </declare-styleable>
-
+    <!--倒计时-->
     <declare-styleable name="CountDownView">
         <attr name="max_minute" format="integer"/>
         <attr name="min_minute" format="integer"/>
@@ -202,6 +202,17 @@
         <attr name="mTBTextColor" format="color"/>
         <attr name="mStartTextSize" format="dimension"/>
         <attr name="mStartTextColor" format="color"/>
+
+    </declare-styleable>
+
+    <!--带阴影的ImageView-->
+    <declare-styleable name="PaletteImageView">
+        <attr name="paletteRadius" format="dimension" />
+        <attr name="paletteSrc" format="reference" />
+        <attr name="palettePadding" format="dimension" />
+        <attr name="paletteOffsetX" format="dimension" />
+        <attr name="paletteOffsetY" format="dimension" />
+        <attr name="paletteShadowRadius" format="dimension" />
 
     </declare-styleable>
 </resources>

@@ -50,14 +50,14 @@
             />
     </LinearLayout>
    </HorizontalScrollView>
-   <!-- <android.support.v7.widget.AppCompatImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/img_anim"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:layout_gravity="center"
         app:srcCompat="@drawable/star_vector"
-        />-->
+        />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

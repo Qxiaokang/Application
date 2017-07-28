@@ -24,4 +24,14 @@
         android:ellipsize="marquee"
         android:marqueeRepeatLimit="marquee_forever"
         />-->
+    <!--<TextView
+        android:id="@+id/tv_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/tv_sixe15"
+        android:textColor="@color/bt_textvcolor1"
+        android:background="@color/tv_bgcolor"
+        android:visibility="gone"
+        />-->
 </LinearLayout>

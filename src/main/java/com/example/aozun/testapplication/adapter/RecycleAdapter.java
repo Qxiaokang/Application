@@ -24,10 +24,8 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.Butvieho
         this.context = context;
         this.strings = strings;
     }
-
     public RecycleAdapter(){
     }
-
     @Override
     public Butviehoder onCreateViewHolder(ViewGroup parent, int viewType){
         Butviehoder butviehoder = new Butviehoder(LayoutInflater.from(context).inflate(R.layout.recycle_layout, parent, false));
@@ -62,7 +60,6 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.Butvieho
     class Butviehoder extends RecyclerView.ViewHolder{
 
         private final Button button;
-
         public Butviehoder(View itemView){
             super(itemView);
             button = (Button) itemView.findViewById(R.id.recybt);

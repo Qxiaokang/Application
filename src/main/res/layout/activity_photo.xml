@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.aozun.testapplication.activity.PhotoActivity">
+
+    <ListView
+        android:id="@+id/lv_photo"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:divider="@color/colorAccent"
+        android:dividerHeight="1dp"
+        android:scrollbars="none"></ListView>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_alignRight="@+id/lv_photo"
+        android:background="@color/colorAccent" />
+    <LinearLayout
+        android:id="@+id/ll_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_toRightOf="@+id/lv_photo"
+        >
+        <Button
+            android:id="@+id/bt_takephotos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/bt_margin"
+            android:background="@drawable/bt_bg_selct1"
+            android:paddingLeft="@dimen/bt_margin"
+            android:paddingRight="@dimen/bt_margin"
+            android:text="拍   照"
+            android:textColor="@color/bt_textvcolor1"
+            android:textSize="@dimen/tv_sixe15" />
+        <Button
+            android:layout_alignParentRight="true"
+            android:id="@+id/bt_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/bt_margin"
+            android:background="@drawable/bt_bg_selct1"
+            android:paddingLeft="@dimen/bt_margin"
+            android:paddingRight="@dimen/bt_margin"
+            android:text="上   传"
+            android:textColor="@color/bt_textvcolor1"
+            android:textSize="@dimen/tv_sixe15"
+            />
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/lv_photo"
+        android:layout_below="@+id/ll_id"
+        ></android.support.v7.widget.RecyclerView>
+    <ImageView
+        android:id="@+id/iv_dia_load"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/anim_dialog_loading"
+        android:layout_centerInParent="true"
+        />
+</RelativeLayout>

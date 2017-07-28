@@ -27,6 +27,7 @@ import com.example.aozun.testapplication.activity.LottieActivity;
 import com.example.aozun.testapplication.activity.MPChartActivity;
 import com.example.aozun.testapplication.activity.MapActivity;
 import com.example.aozun.testapplication.activity.ORMLiteActivity;
+import com.example.aozun.testapplication.activity.PhotoActivity;
 import com.example.aozun.testapplication.activity.PwdViewActivity;
 import com.example.aozun.testapplication.activity.RenRenActivity;
 import com.example.aozun.testapplication.activity.Retrofit2Activity;
@@ -60,7 +61,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
     private String buts[] = {"Retrofit", "DateSlide", "HGallery", "OkHttpUtil", "Litepal",
             "ORMLite", "RxJava", "PwdView", "MPAndroidChart", "Zxing", "Discroll",
             "RenRenActivity","ViewFlipper","MyViews","WelcomePage","TakePhoto","Lottie",
-            "ComstomViews","Web","Map"};//按钮为例
+            "ComstomViews","Web","Map","Photos"};//按钮为例
     private int dragFlags, swipeFlags;
     private RecycleAdapter rca;
     private List<String> datas = new ArrayList<>();
@@ -137,7 +138,7 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
                 lin.setBackgroundDrawable(Drawable.createFromPath(pic_path));
             }
         }
-        Log.e("onCreate:", "position:" + position1 + "left:" + left1);
+        LogUtils.e("onCreate:   position:" + position1 + "left:" + left1);
     }
     //点击item
     @Override
@@ -211,6 +212,9 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
             if(data.equals(buts[19])){
                 intent=new Intent(MainActivity.this, MapActivity.class);
             }
+            if(data.equals(buts[20])){
+                intent=new Intent(MainActivity.this, PhotoActivity.class);
+            }
             if(intent != null){
                 MainActivity.this.startActivity(intent);
             }
@@ -260,9 +264,9 @@ public class MainActivity extends BaseActivity implements RecycleAdapter.Recycle
             rca.notifyItemMoved(fromPosition, toPosition);
             return true;
         }
-
         @Override
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction){
+
         }
 
         @Override

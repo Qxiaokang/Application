@@ -4,6 +4,11 @@ android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
 
+    /*sourceSets{
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }*/
     defaultConfig {
         applicationId "com.example.aozun.testapplication"
         minSdkVersion 14
@@ -12,22 +17,24 @@ android {
         multiDexEnabled true
         versionCode 2
         versionName 'V2.10'
-
+        generatedDensities = ['hdpi', 'xhdpi']  // 默认只生成 hdpi 和 xhdpi的png图
     }
-    signingConfigs{
-        release{
-            storeFile file(store_file)
-            storePassword keyStore_password
-            keyAlias key_alias
-            keyPassword key_password
+
+    signingConfigs {
+        release {
+            storeFile file('D:/AndroidWork/Application/testapplication/testStore.jks')
+            storePassword 'xk123456'
+            keyAlias 'test'
+            keyPassword 'xk123456'
             // v2SigningEnabled false不使用新的签名方案
+        }
+        config {
         }
     }
     buildTypes {
         release {
-            minifyEnabled true //混淆
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            minifyEnabled false //混淆
+            proguardFiles 'proguard-rules.pro'
         }
     }
 
@@ -35,10 +42,9 @@ android {
         abortOnError false //lint时候终止错误上报,防止编译的时候莫名的失败
         checkReleaseBuilds false
     }
-
-
-
-
+    dexOptions{
+        preDexLibraries false//关闭预编译
+    }
    /* freeline{
         hack true
     }*/
@@ -50,7 +56,6 @@ repositories {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
     compile 'com.squareup.okio:okio:1.11.0'
     compile 'com.google.code.gson:gson:2.8.0'
@@ -82,7 +87,7 @@ dependencies {
     //compile 'com.antfortune.freeline:runtime:0.8.4'
     compile files('libs/zxing.jar')
     compile 'com.android.support:design:24.2.1'
-    compile 'com.android.support:support-v4:24.2.1'
+    compile 'com.android.support:appcompat-v7:24.2.1'
     //LeakCanary //compile project(':leakcanary')//检测内存泄漏
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
@@ -92,8 +97,13 @@ dependencies {
     compile 'com.idescout.sql:sqlscout-server:2.0'
     compile 'com.google.android:flexbox:0.3.0-alpha3'
     compile files('libs/open_sdk_r5788.jar')
-    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    //compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
     compile files('libs/MobCommons-2017.0608.1618.jar')
+    //compile files('libs/AMap3DMap_5.2.0_AMapNavi_5.1.0_AMapSearch_5.1.0_AMapLocation_3.4.0_20170602.jar')
+    compile files('libs/BaiduLBS_Android.jar')
+    compile files('libs/httpmime-4.1.2.jar')
+    compile files('libs/IndoorscapeAlbumPlugin.jar')
+    compile 'com.android.support:palette-v7:24.2.1'
 }
 
 

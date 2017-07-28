@@ -1,7 +1,6 @@
 package com.example.aozun.testapplication.activity;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -46,7 +45,7 @@ public class CameraActivity extends BaseActivity implements View.OnClickListener
     private SurfaceHolder surfaceHolder;
     private int cameraPosition = 0;//1代表前置，0代表后置
     private LinearLayout photoL;//存放照片的linearlayout
-    private String path, yes = "确定", no = "取消";
+    public static String path=InitContent.getInstance().getPhotoPath(), yes = "确定", no = "取消";
     private byte[] photobytes;
     private Bitmap bitmap;
     private View lineview;//分隔线
@@ -57,7 +56,7 @@ public class CameraActivity extends BaseActivity implements View.OnClickListener
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//屏幕常亮
         //设置手机屏幕朝向，一共有7种
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //SCREEN_ORIENTATION_BEHIND： 继承Activity堆栈中当前Activity下面的那个Activity的方向
         //SCREEN_ORIENTATION_LANDSCAPE： 横屏(风景照) ，显示时宽度大于高度
         //SCREEN_ORIENTATION_PORTRAIT： 竖屏 (肖像照) ， 显示时高度大于宽度
@@ -65,15 +64,18 @@ public class CameraActivity extends BaseActivity implements View.OnClickListener
         //SCREEN_ORIENTATION_NOSENSOR： 忽略物理感应器——即显示方向与物理感应器无关，不管用户如何旋转设备显示方向都不会随着改变("unspecified"设置除外)
         //SCREEN_ORIENTATION_UNSPECIFIED： 未指定，此为默认值，由Android系统自己选择适当的方向，选择策略视具体设备的配置情况而定，因此不同的设备会有不同的方向选择
         //SCREEN_ORIENTATION_USER： 用户当前的首选方向
-
         setContentView(R.layout.activity_camera);
         MainApplication.getInstance().addActivity(this);
         initViews();
+        LogUtils.i("camerActivityOcreate()");
     }
 
     //初始化
     private void initViews(){
-        path = InitContent.getInstance().getPhotoPath();
+        File file=new File(path);
+        if(!file.exists()){
+            file.mkdirs();
+        }
         takephoto = (Button) findViewById(R.id.take);
         cancleC = (Button) findViewById(R.id.bt_cancel);
         changeC = (Button) findViewById(R.id.change_id);
@@ -366,5 +368,22 @@ public class CameraActivity extends BaseActivity implements View.OnClickListener
         matrix.setScale(m, m);
         bitmap = Bitmap.createBitmap(bp, 0, 0, bp.getWidth(), bp.getHeight(), matrix, true);
         return bitmap;
+    }
+    //manifest add configchanged:"orientation" then execute this method
+    @Override
+    public void onConfigurationChanged(Configuration newConfig){
+        super.onConfigurationChanged(newConfig);
+        if(newConfig.orientation== Configuration.ORIENTATION_PORTRAIT){
+            if(camera!=null){
+                //camera.getParameters().set("","");
+                camera.setDisplayOrientation(90);
+            }
+            LogUtils.i("screenChange to  portrait");
+        }else if(newConfig.orientation== Configuration.ORIENTATION_LANDSCAPE){
+            LogUtils.i("screenChange to land");
+            if(camera!=null){
+                camera.setDisplayOrientation(0);
+            }
+        }
     }
 }

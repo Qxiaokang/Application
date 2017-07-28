@@ -51,7 +51,7 @@ public class ShowImageActivity extends BaseActivity{
         flm.setAlignItems(AlignItems.STRETCH);
         flm.setJustifyContent(JustifyContent.FLEX_START);
         rv.setLayoutManager(flm);
-        aid = new RecycleImageAdapter(ShowImageActivity.this, listimage, true);
+        aid = new RecycleImageAdapter(ShowImageActivity.this, listimage, true,imghandler);
         rv.setAdapter(aid);
         timer = new Timer();
         getListImage();
