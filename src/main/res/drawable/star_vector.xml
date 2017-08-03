@@ -4,5 +4,4 @@
     <target
         android:animation="@animator/star_animator"
         android:name="heartstart"/>
-    
 </selector>
