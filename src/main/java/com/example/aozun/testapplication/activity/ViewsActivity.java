@@ -85,10 +85,8 @@ public class ViewsActivity extends AppCompatActivity implements View.OnClickList
             }
         });
         imageViewa.setOnClickListener(this);
-
         appCompatImageView= (AppCompatImageView) findViewById(R.id.img_anim);
         appCompatImageView.setOnClickListener(this);
-
 
     }
 

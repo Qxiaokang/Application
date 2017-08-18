@@ -4,8 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.AnimationSet;
+import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -20,6 +19,7 @@ public class MTRelativelayout extends RelativeLayout{
     private float x,y,startX,startY;
     private int width,height;
     private LinearLayout linearLayout=null;
+    private boolean isStartAnim=false;
     public MTRelativelayout(Context context){
         super(context);
     }
@@ -60,16 +60,18 @@ public class MTRelativelayout extends RelativeLayout{
                 break;
             case MotionEvent.ACTION_MOVE:
                 if(startX>x&&startX-x>width/3){
-                    LogUtils.e("startAnimation");
-                    startMoveAnimation();
-                    return false;
+                    if(!isStartAnim){
+                        LogUtils.e("startAnimation");
+                        startMoveAnimation();
+                    }
+                    return true;
                 }else {
                     LogUtils.e("noStart");
                     linearLayout.setVisibility(GONE);
                  return true;
                 }
             case MotionEvent.ACTION_UP:
-
+                isStartAnim=false;
                 break;
             default:
                 break;
@@ -77,14 +79,22 @@ public class MTRelativelayout extends RelativeLayout{
         return true;
     }
     private void startMoveAnimation(){
-        AnimationSet aniset=new AnimationSet(true);
-        TranslateAnimation translateAnimation=new TranslateAnimation(getChildAt(0).getRight()+linearLayout.getWidth(),getChildAt(0).getRight(),0,0);
-        AlphaAnimation alp=new AlphaAnimation(0,1);
-        alp.setDuration(2000);
+        LogUtils.d("padding:"+getChildAt(0).getPaddingRight());
+        TranslateAnimation translateAnimation=new TranslateAnimation(getChildAt(0).getRight(),getChildAt(0).getRight()-getChildAt(0).getWidth(),0,0);
         translateAnimation.setDuration(2000);
-        aniset.addAnimation(translateAnimation);
-        aniset.addAnimation(alp);
         linearLayout.setVisibility(VISIBLE);
-        linearLayout.startAnimation(aniset);
+        linearLayout.startAnimation(translateAnimation);
+        translateAnimation.setAnimationListener(new Animation.AnimationListener(){
+            @Override
+            public void onAnimationStart(Animation animation){
+                isStartAnim=true;
+            }
+            @Override
+            public void onAnimationEnd(Animation animation){
+            }
+            @Override
+            public void onAnimationRepeat(Animation animation){
+            }
+        });
     }
 }

@@ -18,3 +18,4 @@ public interface Retrofit2Interface {
     Call<BookSearchResponse> getSearchBooks(@Query("q") String name,@Query("tag") String tag,
                                             @Query("start") int start,@Query("count") int count);
 }
+

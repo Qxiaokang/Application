@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.AnimationDrawable;
@@ -368,6 +367,7 @@ public class PhotoActivity extends BaseActivity implements AdapterView.OnItemCli
             recycleImageAdapter.notifyItemMoved(fromPosition,toPosition);
             //recycleImageAdapter.notifyItemRangeChanged(fromPosition>toPosition?toPosition:fromPosition,toPosition>fromPosition?toPosition-fromPosition+1:fromPosition-toPosition+1);
            // recycleImageAdapter.updateBitmaps(images,true);
+            recycleImageAdapter.notifyDataSetChanged();
             return true;
         }
         @Override
@@ -393,18 +393,6 @@ public class PhotoActivity extends BaseActivity implements AdapterView.OnItemCli
         public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder){
             super.clearView(recyclerView, viewHolder);
             viewHolder.itemView.setBackgroundColor(0);
-        }
-
-        @Override
-        public void onChildDrawOver(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive){
-            LogUtils.e("drawOver-----");
-            super.onChildDrawOver(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-        }
-
-        @Override
-        public void onMoved(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, int fromPos, RecyclerView.ViewHolder target, int toPos, int x, int y){
-            LogUtils.e("onmoved------");
-            super.onMoved(recyclerView, viewHolder, fromPos, target, toPos, x, y);
         }
     });
 

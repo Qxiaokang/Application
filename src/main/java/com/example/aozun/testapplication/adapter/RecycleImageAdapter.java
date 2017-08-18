@@ -113,8 +113,8 @@ public class RecycleImageAdapter extends RecyclerView.Adapter<RecycleImageAdapte
             }
         }
     }
-
     public void updateBitmaps(List<Image> bitmaps,boolean isAll){
+
         this.bitmaps=bitmaps;
         if(isAll){
             notifyDataSetChanged();

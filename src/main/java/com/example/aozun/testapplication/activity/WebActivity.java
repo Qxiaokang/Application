@@ -120,7 +120,6 @@ public class WebActivity extends BaseActivity implements View.OnClickListener{
             super.onHideCustomView();
         }
     };
-
     class CustomViewClient extends WebViewClient{
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon){

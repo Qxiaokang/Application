@@ -34,6 +34,9 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.CAPTURE_VIDEO_OUTPUT"/>
+    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL"/>
     <!-- android:name="com.mob.MobApplication" -->
     <application
         android:name=".utils.AppApplication"
@@ -106,8 +109,7 @@
             android:name=".activity.GifActivity"
             android:screenOrientation="portrait" />
         <!-- 自定义相机页面 -->
-        <activity android:name=".activity.CameraActivity"
-            />
+        <activity android:name=".activity.CameraActivity" />
         <activity
             android:name=".activity.LottieActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -207,10 +209,12 @@
          </meta-data>
         -->
         <!-- <service android:name="com.amap.api.location.APSService"></service> -->
-
         <activity android:name=".activity.CountDownFullActivity" />
-        <activity android:name=".activity.PhotoActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+        <activity
+            android:name=".activity.PhotoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity android:name=".activity.MediaActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             ></activity>
     </application>
 </manifest>
